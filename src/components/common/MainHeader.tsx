@@ -157,7 +157,9 @@ export function MainHeader() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out border-0 ${
-          isSolid
+          mobileMenuOpen
+            ? "bg-white/40 backdrop-blur-2xl border-b border-white/40 shadow-xs py-2 sm:py-2.5"
+            : isSolid
             ? "bg-white/95 backdrop-blur-md shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] py-2 sm:py-2.5"
             : "bg-transparent py-2.5 sm:py-3.5 shadow-none"
         }`}
@@ -714,7 +716,7 @@ export function MainHeader() {
                   setCityMenuOpen(!cityMenuOpen);
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center gap-1 px-2 min-[360px]:px-2.5 py-1 rounded-full bg-white/90 border border-stone-200 text-[11px] min-[360px]:text-xs font-bold text-stone-800 shadow-2xs"
+                className="flex items-center gap-1 px-2 min-[360px]:px-2.5 py-1 rounded-full bg-white/60 hover:bg-white/80 backdrop-blur-md border border-white/70 text-[11px] min-[360px]:text-xs font-bold text-stone-800 shadow-2xs transition"
                 title="Select City"
               >
                 <MapPin className="w-3 h-3 text-[#064B25] shrink-0" />
@@ -722,8 +724,15 @@ export function MainHeader() {
               </button>
 
               {cityMenuOpen && (
-                <div className="absolute top-full mt-2 right-0 w-44 max-w-[calc(100vw-1rem)] bg-white rounded-2xl border border-[#E5EAE5] shadow-2xl py-1.5 z-50 text-xs animate-in fade-in duration-150">
-                  <div className="px-3 py-1 text-[10px] font-black text-stone-400 uppercase tracking-wider border-b border-stone-100">
+                <div
+                  className="absolute top-full mt-2 right-0 w-48 max-w-[calc(100vw-1rem)] rounded-2xl border border-white/70 shadow-2xl py-1.5 z-50 text-xs animate-in fade-in duration-150"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.88)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                  }}
+                >
+                  <div className="px-3 py-1 text-[10px] font-black text-stone-500 uppercase tracking-wider border-b border-stone-200/60">
                     Select Target City
                   </div>
                   {CITIES.map((c) => (
@@ -731,8 +740,8 @@ export function MainHeader() {
                       key={c}
                       type="button"
                       onClick={() => handleCitySelect(c)}
-                      className={`w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-[#F0F7F0] transition ${
-                        selectedCity === c ? "text-[#064B25] font-black bg-[#F0F7F0]" : "text-stone-700 font-medium"
+                      className={`w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/70 transition ${
+                        selectedCity === c ? "text-[#064B25] font-black bg-white/60" : "text-stone-700 font-medium"
                       }`}
                     >
                       <span>{c}</span>
@@ -744,7 +753,11 @@ export function MainHeader() {
             </div>
 
             <Link href="/submit-property">
-              <Button size="sm" variant="outline" className="text-[11px] min-[360px]:text-xs px-2 min-[360px]:px-2.5 py-1 h-7 font-bold border-[#064B25] text-[#064B25] rounded-full bg-white/90 whitespace-nowrap">
+              <Button
+                size="sm"
+                variant="outline"
+                className="text-[11px] min-[360px]:text-xs px-2 min-[360px]:px-2.5 py-1 h-7 font-bold border-[#064B25] text-[#064B25] rounded-full bg-white/60 hover:bg-white/85 backdrop-blur-md shadow-2xs whitespace-nowrap transition"
+              >
                 <span className="hidden min-[340px]:inline">Post Free</span>
                 <span className="min-[340px]:hidden">Post</span>
               </Button>
@@ -756,7 +769,7 @@ export function MainHeader() {
                 setMobileMenuOpen(!mobileMenuOpen);
                 setCityMenuOpen(false);
               }}
-              className="p-1.5 rounded-xl bg-white/85 backdrop-blur-md text-stone-700 hover:bg-stone-100 transition cursor-pointer shrink-0 shadow-2xs"
+              className="p-1.5 rounded-xl bg-white/60 hover:bg-white/85 backdrop-blur-md border border-white/70 text-stone-800 transition cursor-pointer shrink-0 shadow-2xs"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-4 h-4 min-[360px]:w-5 min-[360px]:h-5" /> : <Menu className="w-4 h-4 min-[360px]:w-5 min-[360px]:h-5" />}
@@ -764,16 +777,33 @@ export function MainHeader() {
           </div>
         </div>
 
-        {/* ── 5. MOBILE MENU DRAWER (With Full Navigation, Services, Role Switcher & Auth) ── */}
+        {/* ── 5. MOBILE MENU DRAWER (Full Translucent Multi-Section Glassmorphism System) ── */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3.5 shadow-xl border-t border-stone-100 animate-in fade-in max-h-[85vh] overflow-y-auto">
-            {/* User Auth Banner in Mobile Drawer */}
-            <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between">
+          <div
+            className="lg:hidden px-3.5 sm:px-4 pt-3.5 pb-6 space-y-4 shadow-2xl border-t border-white/50 animate-in fade-in max-h-[85vh] overflow-y-auto"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.38) 100%)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+            }}
+          >
+            {/* User Profile Section (Section B) */}
+            <div
+              className="p-3.5 rounded-2xl border border-white/60 shadow-xs"
+              style={{
+                background: "rgba(255, 255, 255, 0.35)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+              }}
+            >
               {isAuthenticated && user ? (
                 <div className="flex items-center justify-between w-full">
                   <div>
                     <div className="text-xs font-bold text-stone-900">{user.name}</div>
-                    <div className="text-[10px] text-stone-500">{user.email} ({user.role})</div>
+                    <div className="text-[10px] text-stone-600 font-medium">
+                      {user.email} &bull; <span className="capitalize text-emerald-800 font-bold">{user.role}</span>
+                    </div>
                   </div>
                   <button
                     type="button"
@@ -782,7 +812,7 @@ export function MainHeader() {
                       setMobileMenuOpen(false);
                       router.push("/");
                     }}
-                    className="flex items-center gap-1 text-xs font-bold text-rose-600 hover:bg-rose-100/50 px-2.5 py-1 rounded-lg"
+                    className="flex items-center gap-1 text-xs font-bold text-rose-700 bg-white/50 hover:bg-white/80 border border-white/60 px-2.5 py-1 rounded-xl transition shadow-2xs cursor-pointer"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -790,22 +820,29 @@ export function MainHeader() {
                 </div>
               ) : (
                 <div className="flex items-center justify-between w-full">
-                  <span className="text-xs font-bold text-stone-700">Account Access</span>
+                  <span className="text-xs font-bold text-stone-800">Account Access</span>
                   <div className="flex items-center gap-2">
                     <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
-                      <Button size="sm" variant="outline" className="text-xs h-8">Log In</Button>
+                      <Button size="sm" variant="outline" className="text-xs h-8 rounded-xl bg-white/50 hover:bg-white/80 border-white/60 text-stone-800 font-bold">
+                        Log In
+                      </Button>
                     </Link>
                     <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)}>
-                      <Button size="sm" className="text-xs h-8 bg-[#064B25] hover:bg-[#003D1C]">Register</Button>
+                      <Button size="sm" className="text-xs h-8 rounded-xl bg-[#064B25] hover:bg-[#003D1C] text-white font-bold shadow-xs">
+                        Register
+                      </Button>
                     </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* City Selector in Mobile */}
+            {/* Target City Section (Section C) */}
             <div>
-              <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1.5 px-1">Target City</div>
+              <div className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider mb-2 px-1 flex items-center justify-between">
+                <span>Target City</span>
+                <span className="text-[9px] font-semibold text-emerald-800">Active: {selectedCity}</span>
+              </div>
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
                 {CITIES.map((c) => (
                   <button
@@ -815,8 +852,10 @@ export function MainHeader() {
                       handleCitySelect(c);
                       setMobileMenuOpen(false);
                     }}
-                    className={`px-3 py-1 rounded-full text-xs font-bold shrink-0 transition ${
-                      selectedCity === c ? "bg-[#064B25] text-white" : "bg-stone-100 text-stone-700 hover:bg-stone-200"
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold shrink-0 transition-all duration-150 cursor-pointer ${
+                      selectedCity === c
+                        ? "bg-[#064B25] text-white shadow-xs border border-[#064B25]"
+                        : "bg-white/45 hover:bg-white/75 text-stone-800 border border-white/60 shadow-2xs backdrop-blur-md"
                     }`}
                   >
                     {c}
@@ -825,62 +864,105 @@ export function MainHeader() {
               </div>
             </div>
 
-            {/* Navigation Grid */}
+            {/* Navigation Section (Section D) */}
             <div>
-              <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1.5 px-1">Navigation</div>
+              <div className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider mb-2 px-1">Navigation</div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { label: "Home", href: "/" },
-                  { label: "Buy Properties", href: "/buy" },
-                  { label: "Rent Homes", href: "/rent" },
-                  { label: "Commercial", href: "/commercial" },
-                  { label: "New Projects", href: "/projects" },
-                  { label: "Top Builders", href: "/builders" },
-                  { label: "Insights & News", href: "/news" },
+                  { label: "Home", href: "/", icon: "🏠" },
+                  { label: "Buy Properties", href: "/buy", icon: "🔑" },
+                  { label: "Rent Homes", href: "/rent", icon: "🏡" },
+                  { label: "Commercial", href: "/commercial", icon: "🏢" },
+                  { label: "New Projects", href: "/projects", icon: "🏗️" },
+                  { label: "Top Builders", href: "/builders", icon: "🏆" },
+                  { label: "Insights & News", href: "/news", icon: "📰" },
                 ].map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-2 p-2.5 rounded-xl border border-stone-100 hover:bg-[#F0F7F0] text-stone-800 text-xs font-bold"
+                    className="flex items-center gap-2 p-2.5 rounded-2xl border border-white/60 bg-white/45 hover:bg-white/80 text-stone-900 text-xs font-bold backdrop-blur-md shadow-2xs transition-all duration-150 hover:shadow-xs active:scale-[0.98]"
                   >
-                    <span>{link.label}</span>
+                    <span className="text-sm shrink-0">{link.icon}</span>
+                    <span className="truncate">{link.label}</span>
                   </Link>
                 ))}
               </div>
             </div>
 
-            {/* Mobile Services Links */}
-            <div className="pt-2 border-t border-stone-100 space-y-1">
-              <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1">Financial &amp; Legal Tools</div>
-              {[
-                { title: "Stamp Duty Calculator", href: "/services/stamp-duty", icon: "⚖️" },
-                { title: "Home Loan Assistant", href: "/services/home-loan", icon: "🏦" },
-                { title: "Agreement Generation", href: "/services/agreements", icon: "📄" },
-                { title: "Market Intelligence", href: "/news", icon: "📈" },
-              ].map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 p-2 rounded-xl hover:bg-[#F0F7F0] text-xs font-bold text-[#202820]"
-                >
-                  <span>{s.icon}</span>
-                  <span>{s.title}</span>
-                </Link>
-              ))}
+            {/* Financial & Legal Tools (Section E) */}
+            <div className="pt-2 border-t border-white/30 space-y-2">
+              <div className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider px-1">Financial &amp; Legal Tools</div>
+              <div className="grid grid-cols-1 min-[340px]:grid-cols-2 gap-2">
+                {[
+                  { title: "Stamp Duty Calculator", desc: "State rates & sub-registrar cess", href: "/services/stamp-duty", icon: "⚖️" },
+                  { title: "Home Loan Assistant", desc: "EMI & bank eligibility planner", href: "/services/home-loan", icon: "🏦" },
+                  { title: "Agreement Generator", desc: "Standardized deeds & contracts", href: "/services/agreements", icon: "📄" },
+                  { title: "Market Intelligence", desc: "Price index & micro-trends", href: "/news", icon: "📈" },
+                ].map((s) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-start gap-2.5 p-2.5 rounded-2xl border border-white/60 bg-white/45 hover:bg-white/80 text-stone-900 backdrop-blur-md shadow-2xs transition-all duration-150 group"
+                  >
+                    <span className="text-base p-1 rounded-xl bg-white/60 border border-white/70 shadow-2xs shrink-0">{s.icon}</span>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-stone-900 group-hover:text-[#064B25] truncate">{s.title}</div>
+                      <div className="text-[10px] text-stone-600 truncate">{s.desc}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            <div className="pt-2 border-t border-stone-100 flex flex-col gap-2">
+            {/* Popular Searches Section (Section F) */}
+            <div className="pt-2 border-t border-white/30 space-y-2">
+              <div className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider px-1">
+                Popular Searches
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { label: "2 BHK in Mumbai", href: "/buy?city=Mumbai&bhk=2" },
+                  { label: "3 BHK Luxury", href: "/buy?bhk=3" },
+                  { label: "Ready to Move", href: "/buy?status=ready" },
+                  { label: "Zero Brokerage", href: "/rent?owner=true" },
+                  { label: "Commercial Offices", href: "/commercial" },
+                  { label: "New Launches", href: "/projects" },
+                ].map((chip) => (
+                  <Link
+                    key={chip.label}
+                    href={chip.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-2.5 py-1 rounded-full text-[11px] font-semibold text-stone-800 bg-white/45 hover:bg-white/80 border border-white/60 backdrop-blur-md shadow-2xs transition"
+                  >
+                    {chip.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Action CTA */}
+            <div className="pt-2 border-t border-white/30 flex flex-col gap-2">
               <Link href="/submit-property" onClick={() => setMobileMenuOpen(false)} className="w-full">
-                <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-bold h-10 text-xs rounded-xl">
-                  Post Free Property Ad
+                <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-extrabold h-11 text-xs rounded-2xl shadow-md flex items-center justify-center gap-2 border border-emerald-700/50">
+                  <PlusCircle className="w-4 h-4" />
+                  <span>Post Free Property Ad</span>
                 </Button>
               </Link>
             </div>
           </div>
         )}
       </header>
+
+      {/* Backdrop overlay when mobile menu is open so tapping outside closes it */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
       {/* Spacer for non-home pages so content doesn't tuck under the fixed navbar */}
       {!isHomePage && <div className="h-16 sm:h-18" />}
