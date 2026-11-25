@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+
+    /* Exact Brand Emerald from Logo */
+    --primary: 138 100% 14%; /* #004614 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 138 30% 96%;
+    --secondary-foreground: 138 100% 14%;
+
+    --muted: 120 8% 96%;
+    --muted-foreground: 120 5% 40%;
+
+    /* Vibrant Leaf Green from the 'i' dot & crest */
+    --accent: 86 73% 43%; /* #68B81E */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 138 20% 90%;
+    --input: 138 15% 88%;
+    --ring: 138 100% 14%;
+
+    --radius: 1rem;
+
+    /* Guardian Property Experts Brand Color Palette */
+    --gpe-deep-forest: #003C14;
+    --gpe-forest: #004614;
+    --gpe-emerald: #16852C;
+    --gpe-leaf: #65B32E;
+    --gpe-lime: #78BE1E;
+    --gpe-black: #000000;
+    --gpe-charcoal: #111827;
+    --gpe-offwhite: #F8FAF8;
+    --gpe-grey: #E5E7EB;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-[#65B32E]/30 selection:text-[#003C14];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #004614;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #65B32E;
+}
+
+/* Brand Gradient Utilities matching the 3D 'G' logo */
+.bg-gradient-logo {
+  background: linear-gradient(135deg, #003C14 0%, #16852C 55%, #65B32E 100%);
+}
+
+.bg-gradient-logo-reverse {
+  background: linear-gradient(135deg, #65B32E 0%, #16852C 45%, #003C14 100%);
+}
+
+.bg-gradient-dark-logo {
+  background: linear-gradient(135deg, #050805 0%, #003C14 50%, #050805 100%);
+}
+
+.text-gradient-logo {
+  background: linear-gradient(135deg, #003C14 0%, #16852C 50%, #65B32E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-logo-gradient {
+  border-image: linear-gradient(to right, #003C14, #16852C, #65B32E) 1;
+}
+
+/* Glassmorphism with Logo Tint */
+.glass-logo-light {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 60, 20, 0.12);
+}
+
+.glass-logo-dark {
+  background: rgba(5, 8, 5, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(101, 179, 46, 0.25);
+}

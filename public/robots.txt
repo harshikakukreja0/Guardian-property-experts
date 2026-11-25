@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Allow: /buy
+Allow: /rent
+Allow: /commercial
+Allow: /property/
+Allow: /projects/
+Allow: /builders/
+
+# Disallow private dashboards and administrative consoles
+Disallow: /dashboard/
+Disallow: /dashboard/super-admin
+Disallow: /dashboard/operations
+Disallow: /dashboard/sales-crm
+Disallow: /dashboard/broker
+Disallow: /dashboard/builder
+Disallow: /dashboard/owner
+Disallow: /dashboard/customer
+Disallow: /dashboard/support
+Disallow: /api/
+
+Sitemap: https://guardianpropertyexpert.com/sitemap.xml
