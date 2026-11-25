@@ -209,34 +209,39 @@ function NewsContent() {
         </div>
 
         {/* Minimal Editorial Category Filter Tabs */}
-        <div className="border-b border-stone-200">
-          <div
-            role="tablist"
-            aria-label="Insights categories"
-            className="flex items-center gap-5 sm:gap-7 overflow-x-auto scrollbar-none -mb-px"
-          >
-            {categories.map((c) => {
-              const Icon = c.icon;
-              const isActive = activeCategory === c.id;
-              return (
-                <button
-                  key={c.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveCategory(c.id)}
-                  className={`flex items-center gap-1.5 py-3 text-xs sm:text-[13px] whitespace-nowrap shrink-0 border-b-2 transition-colors cursor-pointer focus-visible:outline-none focus-visible:text-[#064B25] ${
-                    isActive
-                      ? "border-[#064B25] text-[#064B25] font-semibold"
-                      : "border-transparent text-stone-500 hover:text-stone-900 font-medium"
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-[#064B25]" : "text-stone-400"}`} />
-                  <span>{c.label}</span>
-                </button>
-              );
-            })}
-          </div>
+        <div
+          role="tablist"
+          aria-label="Insights categories"
+          className="flex items-center gap-6 sm:gap-8 overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-none pr-4 sm:pr-0"
+        >
+          {categories.map((c) => {
+            const Icon = c.icon;
+            const isActive = activeCategory === c.id;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={(e) => {
+                  setActiveCategory(c.id);
+                  e.currentTarget.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "nearest",
+                    block: "nearest",
+                  });
+                }}
+                className={`flex items-center gap-1.5 py-2.5 text-xs sm:text-[13px] whitespace-nowrap shrink-0 border-b-2 transition-colors cursor-pointer focus-visible:outline-none focus-visible:text-[#064B25] ${
+                  isActive
+                    ? "border-[#064B25] text-[#064B25] font-medium"
+                    : "border-transparent text-stone-500 hover:text-stone-900 font-normal"
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-[#064B25]" : "text-stone-400"}`} />
+                <span>{c.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Featured Editorial Report */}

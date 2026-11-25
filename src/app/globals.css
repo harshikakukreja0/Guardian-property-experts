@@ -75,6 +75,17 @@
   background: #65B32E;
 }
 
+/* Hide scrollbars cleanly while preserving horizontal touch/wheel scrolling */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* Brand Gradient Utilities matching the 3D 'G' logo */
 .bg-gradient-logo {
   background: linear-gradient(135deg, #003C14 0%, #16852C 55%, #65B32E 100%);
