@@ -87,9 +87,9 @@ export default function AgreementGenerationPage() {
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <main className="flex-1 py-6 sm:py-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full min-w-0">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-xs font-semibold text-stone-500">
+        <div className="mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-[#064B25]">Home</Link>
           <span>/</span>
           <span>Services</span>
@@ -114,7 +114,7 @@ export default function AgreementGenerationPage() {
 
         {/* Step Progress Indicator */}
         <div className="mb-8 bg-white rounded-2xl p-4 border border-[#E5EAE5] shadow-xs">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          <div className="grid grid-cols-1 min-[340px]:grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
             {[
               { num: 1, label: "Agreement Type" },
               { num: 2, label: "Parties Details" },
@@ -469,13 +469,13 @@ export default function AgreementGenerationPage() {
                 </div>
               </div>
 
-              <div className="flex justify-between pt-2">
-                <Button variant="outline" onClick={() => setStep(3)} className="rounded-xl">
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <Button variant="outline" onClick={() => setStep(3)} className="rounded-xl w-full sm:w-auto">
                   Back to Terms
                 </Button>
-                <Link href="/services/stamp-duty">
-                  <Button className="bg-[#064B25] hover:bg-[#003D1C] text-white font-bold px-6 h-11 rounded-xl">
-                    <span>Calculate Registration Duty for this Agreement</span>
+                <Link href="/services/stamp-duty" className="w-full sm:w-auto">
+                  <Button className="bg-[#064B25] hover:bg-[#003D1C] text-white font-bold px-6 h-11 rounded-xl w-full sm:w-auto">
+                    <span>Calculate Registration Duty</span>
                     <ChevronRight className="w-4 h-4 ml-1.5" />
                   </Button>
                 </Link>

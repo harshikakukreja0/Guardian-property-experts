@@ -66,9 +66,9 @@ export default function HomeLoanPage() {
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <main className="flex-1 py-6 sm:py-10 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full min-w-0">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-xs font-semibold text-stone-500">
+        <div className="mb-6 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-[#064B25]">Home</Link>
           <span>/</span>
           <span>Services</span>
@@ -255,7 +255,7 @@ export default function HomeLoanPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 min-[340px]:grid-cols-2 gap-2">
                     <div>
                       <label className="block font-bold text-stone-700 mb-1">Mobile Number</label>
                       <input

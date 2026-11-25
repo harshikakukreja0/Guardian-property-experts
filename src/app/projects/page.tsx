@@ -27,11 +27,11 @@ export default function ProjectsPage() {
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 min-w-0">
         <div className="space-y-2">
           <div className="text-xs text-stone-500">Home &bull; New Residential Projects</div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
               Trending New Residential Projects
             </h1>
             <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
@@ -44,12 +44,12 @@ export default function ProjectsPage() {
         </div>
 
         {/* Stage Filter Tabs */}
-        <div className="flex gap-2 overflow-x-auto pb-2 border-b border-stone-200">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 pb-3 border-b border-stone-200">
           {STAGES.map((stage) => (
             <button
               key={stage}
               onClick={() => setSelectedStage(stage)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition whitespace-nowrap ${
                 selectedStage === stage
                   ? "bg-gpe-forest text-white shadow-sm"
                   : "bg-white border border-stone-200 text-stone-600 hover:bg-stone-100"

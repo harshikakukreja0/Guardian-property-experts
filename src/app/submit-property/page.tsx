@@ -252,7 +252,7 @@ export default function SubmitPropertyPage() {
                     <h3 className="text-lg font-bold text-stone-900">Property Configuration & Area</h3>
                     <p className="text-xs text-stone-500">Provide dimensions and layout details.</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-3">
                     <div>
                       <label className="text-xs font-semibold text-stone-700 block mb-1">BHK</label>
                       <select

@@ -12,11 +12,11 @@ export default function BuildersPage() {
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 min-w-0">
         <div className="space-y-2">
           <div className="text-xs text-stone-500">Home &bull; Featured Builders</div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
               A-Grade Real Estate Developers
             </h1>
             <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">

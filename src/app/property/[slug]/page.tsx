@@ -67,19 +67,19 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ slug:
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 min-w-0">
         {/* Breadcrumb & Navigation Back */}
-        <div className="flex items-center justify-between">
-          <div className="text-xs text-stone-500 flex items-center gap-2">
-            <Link href="/" className="hover:text-gpe-forest">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="text-xs text-stone-500 flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <Link href="/" className="hover:text-gpe-forest shrink-0">
               Home
             </Link>
-            <span>&bull;</span>
-            <Link href={`/${property.purpose}`} className="hover:text-gpe-forest capitalize">
+            <span className="shrink-0">&bull;</span>
+            <Link href={`/${property.purpose}`} className="hover:text-gpe-forest capitalize shrink-0">
               {property.purpose}
             </Link>
-            <span>&bull;</span>
-            <span className="text-stone-800 font-medium truncate max-w-xs">{property.title}</span>
+            <span className="shrink-0">&bull;</span>
+            <span className="text-stone-800 font-medium truncate max-w-[140px] sm:max-w-xs">{property.title}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -171,7 +171,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ slug:
         {/* Main Content Layout: Details (8 cols) + Sticky Seller Card (4 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Property Full Details */}
-          <div className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8 min-w-0">
             {/* Header Info */}
             <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-8 shadow-xs space-y-4">
               <div className="flex flex-wrap items-center gap-2">
