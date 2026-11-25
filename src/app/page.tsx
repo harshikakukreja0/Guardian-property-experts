@@ -133,11 +133,11 @@ export default function HomePage() {
           {/* Hero Content: Center-Aligned, Clean Minimal Single-Line Title */}
           <div className="relative z-10 w-full max-w-5xl mx-auto space-y-5 text-center">
             {/* Minimal Single-Line Heading (Housing.com Style) */}
-            <div className="space-y-1.5 max-w-3xl mx-auto px-2">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-[#1a2b1f] drop-shadow-xs">
+            <div className="space-y-1.5 max-w-3xl mx-auto px-1 sm:px-2">
+              <h1 className="text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-[#1a2b1f] drop-shadow-xs">
                 Houses &amp; Properties in {activeCity}
               </h1>
-              <p className="text-xs sm:text-sm font-medium text-stone-700/90">
+              <p className="text-[11px] sm:text-sm font-medium text-stone-700/90">
                 Verified Listings &bull; RERA Audited &bull; Zero Brokerage Options
               </p>
             </div>
@@ -219,7 +219,7 @@ export default function HomePage() {
 
         {/* ── 3. TRUST & STATISTICS STRIP (MATCHES REFERENCE DESIGN) ── */}
         <section className="max-w-5xl mx-auto px-4 mt-8 relative z-20">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 py-4 px-6 rounded-2xl bg-[#F0F7F0]/80 border border-emerald-100">
+          <div className="grid grid-cols-1 min-[340px]:grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-6 py-4 px-4 sm:px-6 rounded-2xl bg-[#F0F7F0]/80 border border-emerald-100">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-white border border-emerald-200 flex items-center justify-center text-[#064B25] shrink-0 shadow-2xs">
                 <Home className="w-5 h-5" />
@@ -276,7 +276,7 @@ export default function HomePage() {
             </div>
 
             {/* Filter Tabs: All, Buy, Rent, Commercial */}
-            <div className="flex items-center p-1 rounded-2xl bg-white border border-[#E5EAE5] shadow-xs">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1 p-1 rounded-2xl bg-white border border-[#E5EAE5] shadow-xs max-w-full">
               {[
                 { id: "all", label: "All Properties" },
                 { id: "buy", label: "For Sale" },
@@ -286,7 +286,7 @@ export default function HomePage() {
                 <button
                   key={f.id}
                   onClick={() => setPropertyFilter(f.id as any)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+                  className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition ${
                     propertyFilter === f.id
                       ? "bg-[#064B25] text-white shadow-xs"
                       : "text-stone-600 hover:text-[#064B25]"

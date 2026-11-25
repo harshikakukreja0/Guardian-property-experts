@@ -101,13 +101,13 @@ export default function BuyPage() {
     <div className="min-h-screen flex flex-col bg-stone-50/50">
       <MainHeader />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
         {/* Page Title & Breadcrumbs */}
         <div className="mb-6 space-y-1">
           <div className="text-xs text-stone-500">
-            Home &bull; Properties for Sale {city !== "All Cities" ? `&bull; in ${city}` : ""}
+            Home &bull; Properties for Sale {city !== "All Cities" ? ` • in ${city}` : ""}
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+          <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
             Properties for Sale {city !== "All Cities" ? `in ${city}` : "Across India"}
           </h1>
           <p className="text-xs text-stone-500">
@@ -144,30 +144,30 @@ export default function BuyPage() {
           </div>
 
           {/* List vs Map View Toggle */}
-          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
+          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl max-w-full">
             <button
               onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "list" ? "bg-white text-gpe-forest shadow-xs font-bold" : "text-stone-600"
               }`}
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
+              <LayoutGrid className="w-3.5 h-3.5 shrink-0" />
               <span>List View</span>
             </button>
             <button
               onClick={() => setViewMode("map")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 viewMode === "map" ? "bg-white text-gpe-forest shadow-xs font-bold" : "text-stone-600"
               }`}
             >
-              <Map className="w-3.5 h-3.5" />
+              <Map className="w-3.5 h-3.5 shrink-0" />
               <span>Map View</span>
             </button>
           </div>
         </div>
 
         {/* Main Grid: Filters Sidebar + Results List/Map */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Desktop Filter Sidebar */}
           <aside className="hidden lg:block lg:col-span-3 sticky top-28">
             <AdvancedFilters />
@@ -187,7 +187,7 @@ export default function BuyPage() {
           )}
 
           {/* Main Content Area */}
-          <section className="lg:col-span-9 space-y-6">
+          <section className="lg:col-span-9 space-y-6 min-w-0 w-full">
             {viewMode === "map" ? (
               <PropertyMap properties={filteredProperties} />
             ) : filteredProperties.length > 0 ? (

@@ -155,16 +155,16 @@ export function MainHeader() {
             : "bg-transparent py-2.5 sm:py-3.5 shadow-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-1.5 sm:gap-3">
+        <div className="max-w-7xl mx-auto px-2 min-[360px]:px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-1.5 sm:gap-3">
           {/* ── 1. LEFT: Brand Logo with Soft Frosted Gradient Pill (Snug & Fitted) ── */}
           <Link href="/" className="flex items-center group shrink-0" title="Guardian Property Experts Home">
-            <div className="relative inline-flex items-center px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-white/95 via-white/90 to-white/85 backdrop-blur-md shadow-xs border border-white/80 transition-transform duration-150 group-hover:scale-[1.02]">
-              <div className="relative h-7 sm:h-8 w-[105px] sm:w-[118px]">
+            <div className="relative inline-flex items-center px-2 min-[360px]:px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-white/95 via-white/90 to-white/85 backdrop-blur-md shadow-xs border border-white/80 transition-transform duration-150 group-hover:scale-[1.02]">
+              <div className="relative h-6 min-[360px]:h-7 sm:h-8 w-[82px] min-[360px]:w-[105px] sm:w-[118px]">
                 <Image
                   src="/logo/guardian-logo-tight.png"
                   alt="Guardian Property Experts"
                   fill
-                  sizes="(max-width: 640px) 105px, 118px"
+                  sizes="(max-width: 360px) 82px, (max-width: 640px) 105px, 118px"
                   className="object-contain object-center"
                   priority
                 />
@@ -506,8 +506,8 @@ export function MainHeader() {
             </div>
           </nav>
 
-          {/* ── 3. RIGHT: City Selector + Post Property + User Auth & Account (Never Overflowing) ── */}
-          <div className="hidden sm:flex items-center gap-1.5 xl:gap-2 shrink-0">
+          {/* ── 3. RIGHT: City Selector + Post Property + User Auth & Account (Desktop lg+) ── */}
+          <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
             {/* Location Selection Pill */}
             <div className="relative">
               <button
@@ -697,31 +697,62 @@ export function MainHeader() {
             </div>
           </div>
 
-          {/* ── 4. MOBILE / TABLET TOGGLE ── */}
-          <div className="flex lg:hidden items-center gap-1.5">
-            {/* Mobile City Selector */}
-            <button
-              type="button"
-              onClick={() => setCityMenuOpen(!cityMenuOpen)}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 border border-stone-200 text-xs font-bold text-stone-800"
-            >
-              <MapPin className="w-3 h-3 text-[#064B25]" />
-              <span className="max-w-[65px] truncate">{selectedCity}</span>
-            </button>
+          {/* ── 4. MOBILE / TABLET TOGGLE (<1024px) ── */}
+          <div className="flex lg:hidden items-center gap-1 min-[360px]:gap-1.5 shrink-0">
+            {/* Mobile City Selector with working dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => {
+                  setCityMenuOpen(!cityMenuOpen);
+                  setMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-1 px-2 min-[360px]:px-2.5 py-1 rounded-full bg-white/90 border border-stone-200 text-[11px] min-[360px]:text-xs font-bold text-stone-800 shadow-2xs"
+                title="Select City"
+              >
+                <MapPin className="w-3 h-3 text-[#064B25] shrink-0" />
+                <span className="max-w-[48px] min-[360px]:max-w-[70px] truncate">{selectedCity}</span>
+              </button>
+
+              {cityMenuOpen && (
+                <div className="absolute top-full mt-2 right-0 w-44 max-w-[calc(100vw-1rem)] bg-white rounded-2xl border border-[#E5EAE5] shadow-2xl py-1.5 z-50 text-xs animate-in fade-in duration-150">
+                  <div className="px-3 py-1 text-[10px] font-black text-stone-400 uppercase tracking-wider border-b border-stone-100">
+                    Select Target City
+                  </div>
+                  {CITIES.map((c) => (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() => handleCitySelect(c)}
+                      className={`w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-[#F0F7F0] transition ${
+                        selectedCity === c ? "text-[#064B25] font-black bg-[#F0F7F0]" : "text-stone-700 font-medium"
+                      }`}
+                    >
+                      <span>{c}</span>
+                      {selectedCity === c && <Check className="w-3 h-3 text-[#064B25]" />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <Link href="/submit-property">
-              <Button size="sm" variant="outline" className="text-xs px-2.5 py-1 h-7 font-bold border-[#064B25] text-[#064B25] rounded-full">
-                Post Free
+              <Button size="sm" variant="outline" className="text-[11px] min-[360px]:text-xs px-2 min-[360px]:px-2.5 py-1 h-7 font-bold border-[#064B25] text-[#064B25] rounded-full bg-white/90 whitespace-nowrap">
+                <span className="hidden min-[340px]:inline">Post Free</span>
+                <span className="min-[340px]:hidden">Post</span>
               </Button>
             </Link>
 
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-xl text-stone-700 hover:bg-stone-100 transition cursor-pointer"
+              onClick={() => {
+                setMobileMenuOpen(!mobileMenuOpen);
+                setCityMenuOpen(false);
+              }}
+              className="p-1.5 rounded-xl bg-white/85 backdrop-blur-md text-stone-700 hover:bg-stone-100 transition cursor-pointer shrink-0 shadow-2xs"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4 min-[360px]:w-5 min-[360px]:h-5" /> : <Menu className="w-4 h-4 min-[360px]:w-5 min-[360px]:h-5" />}
             </button>
           </div>
         </div>

@@ -51,7 +51,7 @@ export function MainFooter() {
         </div>
 
         {/* Minimal Navigation Grid (4 Clean Columns) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 min-[340px]:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10">
           {/* Col 1: Properties */}
           <div className="space-y-3">
             <h4 className="text-[11px] font-black uppercase tracking-wider text-[#064B25]">

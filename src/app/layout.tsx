@@ -1,5 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://guardianpropertyexpert.com"),
@@ -45,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col font-sans bg-stone-50/50 text-stone-900 selection:bg-emerald-600 selection:text-white antialiased">
+      <body className="min-h-screen w-full max-w-full overflow-x-clip flex flex-col font-sans bg-stone-50/50 text-stone-900 selection:bg-emerald-600 selection:text-white antialiased">
         {children}
       </body>
     </html>

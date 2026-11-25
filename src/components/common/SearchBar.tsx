@@ -120,7 +120,7 @@ export function SearchBar({ className = "" }: { className?: string }) {
                 key={tab.id}
                 type="button"
                 onClick={() => setPurpose(tab.id as PropertyPurpose)}
-                className={`px-5 sm:px-7 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 min-[360px]:px-5 sm:px-7 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#064B25] text-white shadow-xs"
                     : "text-[#202820] hover:text-[#064B25]"
@@ -134,18 +134,18 @@ export function SearchBar({ className = "" }: { className?: string }) {
       </div>
 
       {/* 2. Unified Search Panel (Fully Responsive Pill Bar) */}
-      <div className="bg-white rounded-3xl lg:rounded-full p-2 sm:p-2.5 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.1)] border border-[#E5EAE5] flex flex-col lg:flex-row items-stretch lg:items-center gap-2">
+      <div className="bg-white rounded-3xl lg:rounded-full p-2 sm:p-2.5 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.1)] border border-[#E5EAE5] flex flex-col lg:flex-row items-stretch lg:items-center gap-2 min-w-0 w-full">
         {/* Locality, Project or Society Search Input */}
-        <div className="relative flex-1 min-w-[200px] w-full">
-          <div className="flex items-center px-4 py-2">
-            <Search className="w-4 h-4 text-stone-400 shrink-0 mr-2.5" />
+        <div className="relative flex-1 min-w-0 w-full">
+          <div className="flex items-center px-3 sm:px-4 py-2">
+            <Search className="w-4 h-4 text-stone-400 shrink-0 mr-2" />
             <input
               type="text"
               value={locality}
               onChange={(e) => setLocality(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder="Search by locality, project or landmark (e.g. Bandra, Powai, Whitefield)"
-              className="w-full h-8 bg-transparent text-xs sm:text-sm text-[#202820] placeholder:text-stone-400 font-medium focus:outline-none"
+              placeholder="Search locality, project or landmark"
+              className="w-full min-w-0 h-8 bg-transparent text-xs sm:text-sm text-[#202820] placeholder:text-stone-400 font-medium focus:outline-none"
             />
           </div>
         </div>
@@ -172,7 +172,7 @@ export function SearchBar({ className = "" }: { className?: string }) {
 
           {typeDropdownOpen && (
             <div
-              className="absolute left-0 lg:right-0 lg:left-auto mt-2 w-56 bg-white rounded-2xl border border-[#E5EAE5] shadow-2xl p-2 z-50 animate-in fade-in"
+              className="absolute left-0 lg:right-0 lg:left-auto mt-2 w-56 max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-[#E5EAE5] shadow-2xl p-2 z-50 animate-in fade-in"
               onMouseLeave={() => setTypeDropdownOpen(false)}
             >
               <div className="text-[10px] font-black text-[#064B25] px-2 py-1 uppercase tracking-wider">
