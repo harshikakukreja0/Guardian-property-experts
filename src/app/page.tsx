@@ -263,7 +263,7 @@ export default function HomePage() {
         </section>
 
         {/* ── 4. EXPLORE PREMIUM PROPERTIES WITH FILTERS ── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16 min-w-0">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-1.5">
@@ -276,9 +276,9 @@ export default function HomePage() {
             </div>
 
             {/* Filter Tabs: All, Buy, Rent, Commercial */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1 p-1 rounded-2xl bg-white border border-[#E5EAE5] shadow-xs max-w-full">
+            <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-white border border-[#E5EAE5] shadow-xs max-w-full overflow-x-auto scrollbar-none">
               {[
-                { id: "all", label: "All Properties" },
+                { id: "all", label: "All", fullLabel: "All Properties" },
                 { id: "buy", label: "For Sale" },
                 { id: "rent", label: "For Rent" },
                 { id: "commercial", label: "Commercial" },
@@ -286,13 +286,20 @@ export default function HomePage() {
                 <button
                   key={f.id}
                   onClick={() => setPropertyFilter(f.id as any)}
-                  className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition ${
+                  className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition whitespace-nowrap shrink-0 ${
                     propertyFilter === f.id
                       ? "bg-[#064B25] text-white shadow-xs"
-                      : "text-stone-600 hover:text-[#064B25]"
+                      : "text-stone-600 hover:text-[#064B25] hover:bg-stone-50"
                   }`}
                 >
-                  {f.label}
+                  {f.fullLabel ? (
+                    <>
+                      <span className="sm:hidden">{f.label}</span>
+                      <span className="hidden sm:inline">{f.fullLabel}</span>
+                    </>
+                  ) : (
+                    f.label
+                  )}
                 </button>
               ))}
             </div>
