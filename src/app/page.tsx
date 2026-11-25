@@ -134,10 +134,10 @@ export default function HomePage() {
           <div className="relative z-10 w-full max-w-5xl mx-auto space-y-5 text-center">
             {/* Minimal Single-Line Heading (Housing.com Style) */}
             <div className="space-y-1.5 max-w-3xl mx-auto px-1 sm:px-2">
-              <h1 className="text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-[#1a2b1f] drop-shadow-xs">
+              <h1 className="text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-[#1a2b1f] drop-shadow-xs">
                 Houses &amp; Properties in {activeCity}
               </h1>
-              <p className="text-[11px] sm:text-sm font-medium text-stone-700/90">
+              <p className="text-[11px] sm:text-sm font-normal text-stone-700/90">
                 Verified Listings &bull; RERA Audited &bull; Zero Brokerage Options
               </p>
             </div>
@@ -162,10 +162,10 @@ export default function HomePage() {
                   <Calculator className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-black text-[#202820] group-hover:text-[#064B25] transition">
+                  <h3 className="text-sm font-semibold text-[#202820] group-hover:text-[#064B25] transition">
                     Stamp Duty Calculator
                   </h3>
-                  <p className="text-[11px] text-stone-500 font-medium">State charges &amp; registration</p>
+                  <p className="text-[11px] text-stone-500 font-normal">State charges &amp; registration</p>
                 </div>
               </div>
               <div className="w-8 h-8 rounded-full border border-stone-200 group-hover:border-[#064B25] group-hover:bg-[#F0F7F0] flex items-center justify-center text-stone-500 group-hover:text-[#064B25] transition shrink-0">
@@ -183,10 +183,10 @@ export default function HomePage() {
                   <Coins className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-black text-[#202820] group-hover:text-[#064B25] transition">
+                  <h3 className="text-sm font-semibold text-[#202820] group-hover:text-[#064B25] transition">
                     Home Loan Assistant
                   </h3>
-                  <p className="text-[11px] text-stone-500 font-medium">Affordability &amp; EMI calculation</p>
+                  <p className="text-[11px] text-stone-500 font-normal">Affordability &amp; EMI calculation</p>
                 </div>
               </div>
               <div className="w-8 h-8 rounded-full border border-stone-200 group-hover:border-[#064B25] group-hover:bg-[#F0F7F0] flex items-center justify-center text-stone-500 group-hover:text-[#064B25] transition shrink-0">
@@ -204,10 +204,10 @@ export default function HomePage() {
                   <FileText className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-black text-[#202820] group-hover:text-[#064B25] transition">
+                  <h3 className="text-sm font-semibold text-[#202820] group-hover:text-[#064B25] transition">
                     Agreement Generation
                   </h3>
-                  <p className="text-[11px] text-stone-500 font-medium">Rent, lease &amp; sale contracts</p>
+                  <p className="text-[11px] text-stone-500 font-normal">Rent, lease &amp; sale contracts</p>
                 </div>
               </div>
               <div className="w-8 h-8 rounded-full border border-stone-200 group-hover:border-[#064B25] group-hover:bg-[#F0F7F0] flex items-center justify-center text-stone-500 group-hover:text-[#064B25] transition shrink-0">
@@ -225,8 +225,8 @@ export default function HomePage() {
                 <Home className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-lg sm:text-xl font-black text-[#003D1C] block leading-tight">14,850+</span>
-                <span className="text-[11px] text-stone-600 font-bold">Verified Properties</span>
+                <span className="text-lg sm:text-xl font-semibold text-[#003D1C] block leading-tight">14,850+</span>
+                <span className="text-[11px] text-stone-600 font-medium">Verified Properties</span>
               </div>
             </div>
 
@@ -235,8 +235,8 @@ export default function HomePage() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-lg sm:text-xl font-black text-[#003D1C] block leading-tight">100%</span>
-                <span className="text-[11px] text-stone-600 font-bold">RERA Audited</span>
+                <span className="text-lg sm:text-xl font-semibold text-[#003D1C] block leading-tight">100%</span>
+                <span className="text-[11px] text-stone-600 font-medium">RERA Audited</span>
               </div>
             </div>
 
@@ -245,8 +245,8 @@ export default function HomePage() {
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-lg sm:text-xl font-black text-[#003D1C] block leading-tight">₹850+ Cr</span>
-                <span className="text-[11px] text-stone-600 font-bold">Assets Transacted</span>
+                <span className="text-lg sm:text-xl font-semibold text-[#003D1C] block leading-tight">₹850+ Cr</span>
+                <span className="text-[11px] text-stone-600 font-medium">Assets Transacted</span>
               </div>
             </div>
 
@@ -255,8 +255,8 @@ export default function HomePage() {
                 <Users className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-lg sm:text-xl font-black text-[#003D1C] block leading-tight">8 Roles</span>
-                <span className="text-[11px] text-stone-600 font-bold">Unified Portal</span>
+                <span className="text-lg sm:text-xl font-semibold text-[#003D1C] block leading-tight">8 Roles</span>
+                <span className="text-[11px] text-stone-600 font-medium">Unified Portal</span>
               </div>
             </div>
           </div>
@@ -266,11 +266,11 @@ export default function HomePage() {
         <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16 min-w-0">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-1.5">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#064B25] uppercase tracking-wider mb-1.5">
                 <Sparkles className="w-4 h-4 text-[#65B52E]" />
                 <span>Verified Marketplace</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#202820] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#202820] tracking-tight">
                 Explore Premium Properties
               </h2>
             </div>
@@ -286,7 +286,7 @@ export default function HomePage() {
                 <button
                   key={f.id}
                   onClick={() => setPropertyFilter(f.id as any)}
-                  className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition whitespace-nowrap shrink-0 ${
+                  className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-medium transition whitespace-nowrap shrink-0 ${
                     propertyFilter === f.id
                       ? "bg-[#064B25] text-white shadow-xs"
                       : "text-stone-600 hover:text-[#064B25] hover:bg-stone-50"
@@ -313,7 +313,7 @@ export default function HomePage() {
 
           <div className="text-center mt-10">
             <Link href="/buy">
-              <Button variant="outline" className="border-[#064B25] text-[#064B25] font-bold px-8 h-12 rounded-full hover:bg-[#F0F7F0]">
+              <Button variant="outline" className="border-[#064B25] text-[#064B25] font-medium px-8 h-12 rounded-full hover:bg-[#F0F7F0]">
                 <span>View All Properties</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
@@ -325,17 +325,17 @@ export default function HomePage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#E5EAE5]">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-2">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#064B25] uppercase tracking-wider mb-2">
                 <Sparkles className="w-4 h-4 text-[#65B52E]" />
                 <span>Handcrafted Selections</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
                 Curated Architectural Collections
               </h2>
             </div>
             <Link
               href="/buy"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#064B25] hover:text-[#65B52E] transition"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#064B25] hover:text-[#65B52E] transition"
             >
               <span>Explore All Luxury Collections</span>
               <ChevronRight className="w-4 h-4" />
@@ -358,15 +358,15 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 rounded-full bg-[#003D1C]/80 backdrop-blur-md text-emerald-300 text-xs font-black border border-emerald-400/40">
+                  <span className="px-3 py-1 rounded-full bg-[#003D1C]/80 backdrop-blur-md text-emerald-300 text-xs font-medium border border-emerald-400/40">
                     {col.count}
                   </span>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                  <h3 className="text-xl font-bold group-hover:text-emerald-300 transition leading-tight">
+                  <h3 className="text-xl font-semibold group-hover:text-emerald-300 transition leading-tight">
                     {col.title}
                   </h3>
-                  <p className="text-xs text-stone-300">{col.subtitle}</p>
+                  <p className="text-xs text-stone-300 font-normal">{col.subtitle}</p>
                 </div>
               </Link>
             ))}
@@ -378,17 +378,17 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
               <div>
-                <div className="flex items-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-2">
+                <div className="flex items-center gap-2 text-xs font-medium text-[#064B25] uppercase tracking-wider mb-2">
                   <Compass className="w-4 h-4 text-[#65B52E]" />
                   <span>Investment Hotspots</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
                   Explore High-Growth Neighborhoods
                 </h2>
               </div>
               <Link
                 href="/buy"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#064B25] hover:text-[#65B52E] transition"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#064B25] hover:text-[#65B52E] transition"
               >
                 <span>View All 30+ Localities</span>
                 <ChevronRight className="w-4 h-4" />
@@ -411,21 +411,21 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                   <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#65B52E] text-white text-[10px] font-black shadow-md">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#65B52E] text-white text-[10px] font-semibold shadow-md">
                       <TrendingUp className="w-3 h-3 text-white" />
                       {loc.growth}
                     </span>
                   </div>
                   <div className="absolute bottom-5 left-5 right-5 text-white">
-                    <span className="text-[11px] text-emerald-300 font-bold uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] text-emerald-300 font-medium uppercase tracking-wider block mb-1">
                       {loc.city}
                     </span>
-                    <h3 className="text-lg font-bold leading-tight group-hover:text-emerald-200 transition">
+                    <h3 className="text-lg font-semibold leading-tight group-hover:text-emerald-200 transition">
                       {loc.name}
                     </h3>
-                    <div className="mt-2 pt-2 border-t border-white/20 flex items-center justify-between text-xs text-stone-300">
+                    <div className="mt-2 pt-2 border-t border-white/20 flex items-center justify-between text-xs text-stone-300 font-normal">
                       <span>{loc.count}</span>
-                      <span className="font-semibold">{loc.avgPrice}</span>
+                      <span className="font-medium">{loc.avgPrice}</span>
                     </div>
                   </div>
                 </Link>
@@ -439,25 +439,25 @@ export default function HomePage() {
           <div className="rounded-3xl bg-gradient-to-br from-[#003D1C] via-[#064B25] to-[#00280D] text-white p-4 min-[360px]:p-6 sm:p-10 lg:p-12 shadow-2xl border border-emerald-400/20 min-w-0">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center min-w-0">
               <div className="lg:col-span-6 space-y-5 sm:space-y-6 min-w-0">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-black border border-emerald-400/30">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-medium border border-emerald-400/30">
                   <Calculator className="w-4 h-4 text-[#65B52E]" />
                   <span>Financial Intelligence</span>
                 </div>
 
-                <h2 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight break-words">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight break-words">
                   Calculate Your Home Loan &amp; Investment EMI
                 </h2>
 
-                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-normal">
                   Plan your real estate purchase with competitive bank rates from HDFC, SBI, ICICI, and Kotak Mahindra. Connect with Guardian mortgage advisors.
                 </p>
 
                 {/* Range Sliders */}
                 <div className="space-y-4 pt-2">
                   <div>
-                    <div className="flex justify-between text-xs font-bold mb-1.5">
+                    <div className="flex justify-between text-xs font-medium mb-1.5">
                       <span className="text-emerald-200">Loan Amount</span>
-                      <span className="text-[#65B52E] text-sm font-black">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
+                      <span className="text-[#65B52E] text-sm font-semibold">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
                     </div>
                     <input
                       type="range"
@@ -471,9 +471,9 @@ export default function HomePage() {
                   </div>
 
                   <div>
-                    <div className="flex justify-between text-xs font-bold mb-1.5">
+                    <div className="flex justify-between text-xs font-medium mb-1.5">
                       <span className="text-emerald-200">Interest Rate (% p.a.)</span>
-                      <span className="text-[#65B52E] text-sm font-black">{interestRate}%</span>
+                      <span className="text-[#65B52E] text-sm font-semibold">{interestRate}%</span>
                     </div>
                     <input
                       type="range"
@@ -487,9 +487,9 @@ export default function HomePage() {
                   </div>
 
                   <div>
-                    <div className="flex justify-between text-xs font-bold mb-1.5">
+                    <div className="flex justify-between text-xs font-medium mb-1.5">
                       <span className="text-emerald-200">Tenure (Years)</span>
-                      <span className="text-[#65B52E] text-sm font-black">{tenureYears} Years</span>
+                      <span className="text-[#65B52E] text-sm font-semibold">{tenureYears} Years</span>
                     </div>
                     <input
                       type="range"
@@ -507,28 +507,28 @@ export default function HomePage() {
               {/* EMI Output Card */}
               <div className="lg:col-span-6 bg-black/40 backdrop-blur-xl border border-white/15 rounded-3xl p-4 min-[360px]:p-6 sm:p-8 space-y-5 sm:space-y-6 min-w-0">
                 <div className="text-center pb-5 sm:pb-6 border-b border-white/10">
-                  <span className="text-[10px] sm:text-xs uppercase font-black tracking-widest text-[#65B52E]">
+                  <span className="text-[10px] sm:text-xs uppercase font-medium tracking-widest text-[#65B52E]">
                     Estimated Monthly EMI
                   </span>
-                  <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black text-white mt-1 break-words">
+                  <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-semibold text-white mt-1 break-words">
                     ₹{emi.toLocaleString("en-IN")}
                   </div>
-                  <span className="text-[11px] text-stone-300">per month</span>
+                  <span className="text-[11px] text-stone-300 font-normal">per month</span>
                 </div>
 
                 <div className="grid grid-cols-1 min-[340px]:grid-cols-2 gap-2.5 sm:gap-4 text-center">
                   <div className="p-3 sm:p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
-                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-semibold">Total Principal</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
+                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-normal">Total Principal</span>
+                    <span className="text-xs sm:text-sm font-semibold text-white">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
                   </div>
                   <div className="p-3 sm:p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
-                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-semibold">Total Interest Payable</span>
-                    <span className="text-xs sm:text-sm font-bold text-[#65B52E]">₹{(totalInterest / 10000000).toFixed(2)} Cr</span>
+                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-normal">Total Interest Payable</span>
+                    <span className="text-xs sm:text-sm font-semibold text-[#65B52E]">₹{(totalInterest / 10000000).toFixed(2)} Cr</span>
                   </div>
                 </div>
 
                 <Link href="/services/home-loan" className="block pt-2">
-                  <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-bold min-h-12 h-auto py-3 px-3 rounded-2xl shadow-xl flex items-center justify-center gap-2 border border-emerald-400/40 text-xs sm:text-sm whitespace-normal text-center leading-snug">
+                  <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-medium min-h-12 h-auto py-3 px-3 rounded-2xl shadow-xl flex items-center justify-center gap-2 border border-emerald-400/40 text-xs sm:text-sm whitespace-normal text-center leading-snug">
                     <span>Get Instant Home Loan Assistance</span>
                     <ArrowRight className="w-4 h-4 shrink-0" />
                   </Button>
@@ -542,17 +542,17 @@ export default function HomePage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-[#E5EAE5]">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-2">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#064B25] uppercase tracking-wider mb-2">
                 <Building2 className="w-4 h-4 text-[#65B52E]" />
                 <span>Premier Masterplans</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
                 Trending New Residential Launches
               </h2>
             </div>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#064B25] hover:text-[#65B52E] transition"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-[#064B25] hover:text-[#65B52E] transition"
             >
               <span>Explore All Projects</span>
               <ChevronRight className="w-4 h-4" />
@@ -570,13 +570,13 @@ export default function HomePage() {
         <section className="bg-stone-100/70 py-20 border-y border-[#E5EAE5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-xs font-black text-[#064B25] uppercase tracking-wider">
+              <span className="text-xs font-medium text-[#064B25] uppercase tracking-wider">
                 India&apos;s Leading Developers
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight mt-1">
                 A-Grade Verified Builders
               </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
+              <p className="text-xs sm:text-sm text-stone-600 font-normal mt-2">
                 Collaborating with developers who uphold uncompromising construction standards, RERA compliance, and on-time delivery records.
               </p>
             </div>
@@ -592,11 +592,11 @@ export default function HomePage() {
         {/* ── 10. CUSTOMER TESTIMONIALS ── */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="flex items-center justify-center gap-2 text-xs font-black text-[#064B25] uppercase tracking-wider mb-1">
+            <div className="flex items-center justify-center gap-2 text-xs font-medium text-[#064B25] uppercase tracking-wider mb-1">
               <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
               <span>Verified Feedback</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
               Trusted by Homebuyers, Investors &amp; Property Partners
             </h2>
           </div>
@@ -612,7 +612,7 @@ export default function HomePage() {
                     <Star key={i} className="w-4 h-4 fill-amber-500" />
                   ))}
                 </div>
-                <p className="text-stone-700 text-sm leading-relaxed italic">
+                <p className="text-stone-700 text-sm font-normal leading-relaxed italic">
                   &ldquo;{t.text}&rdquo;
                 </p>
                 <div className="flex items-center gap-3 pt-2 border-t border-stone-100">
@@ -624,8 +624,8 @@ export default function HomePage() {
                     className="rounded-full object-cover ring-2 ring-stone-100 group-hover:ring-[#064B25]/20 transition-all"
                   />
                   <div>
-                    <h4 className="text-xs font-bold text-[#202820] group-hover:text-[#064B25] transition-colors">{t.name}</h4>
-                    <p className="text-[11px] text-stone-500">{t.role}</p>
+                    <h4 className="text-xs font-semibold text-[#202820] group-hover:text-[#064B25] transition-colors">{t.name}</h4>
+                    <p className="text-[11px] text-stone-500 font-normal">{t.role}</p>
                   </div>
                 </div>
               </div>
@@ -642,35 +642,35 @@ export default function HomePage() {
 
           <div className="max-w-5xl mx-auto text-center relative z-10 space-y-8">
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#85E347] text-xs font-semibold tracking-wide shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#85E347] text-xs font-medium tracking-wide shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#85E347] animate-pulse" />
               <span>Direct Property Owner &amp; Builder Network</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-tight">
                 Looking to Sell, Rent or Showcase <br className="hidden sm:inline" />
                 <span className="bg-gradient-to-r from-emerald-200 via-white to-[#85E347] bg-clip-text text-transparent">
                   Your Premium Property?
                 </span>
               </h2>
-              <p className="text-sm sm:text-base text-emerald-100/80 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-emerald-100/80 max-w-2xl mx-auto leading-relaxed font-normal">
                 Publish directly to verified investors and HNIs across India. Get free listing assistance, high-visibility buyer matches, and expert legal contract drafting included.
               </p>
             </div>
 
             {/* 3 Key Value Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto pt-2">
-              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-medium shadow-sm">
+              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-normal shadow-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#85E347] shrink-0" />
                 <span>Zero Hidden Brokerage</span>
               </div>
-              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-medium shadow-sm">
+              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-normal shadow-sm">
                 <ShieldCheck className="w-4 h-4 text-[#85E347] shrink-0" />
                 <span>100% Verified Buyer Pool</span>
               </div>
-              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-medium shadow-sm">
+              <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/10 text-emerald-100 text-xs font-normal shadow-sm">
                 <Building2 className="w-4 h-4 text-[#85E347] shrink-0" />
                 <span>Free Legal Contract Drafting</span>
               </div>
@@ -679,13 +679,13 @@ export default function HomePage() {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
               <Link href="/submit-property" className="w-full sm:w-auto">
-                <Button className="w-full sm:w-auto bg-gradient-to-r from-[#65B52E] to-[#4fa01e] hover:from-[#579f26] hover:to-[#438a19] text-white font-extrabold px-8 h-12 rounded-full text-sm sm:text-base shadow-lg shadow-[#65B52E]/30 hover:shadow-[#65B52E]/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5">
+                <Button className="w-full sm:w-auto bg-gradient-to-r from-[#65B52E] to-[#4fa01e] hover:from-[#579f26] hover:to-[#438a19] text-white font-medium px-8 h-12 rounded-full text-sm sm:text-base shadow-lg shadow-[#65B52E]/30 hover:shadow-[#65B52E]/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5">
                   <span>Post Your Property (Free)</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
               <Link href="/auth/register?role=builder" className="w-full sm:w-auto">
-                <Button variant="glass" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-8 h-12 rounded-full text-sm sm:text-base backdrop-blur-md shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                <Button variant="glass" className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/25 text-white font-medium px-8 h-12 rounded-full text-sm sm:text-base backdrop-blur-md shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
                   <Building2 className="w-4 h-4 text-emerald-200" />
                   <span>Register as Builder / Dealer</span>
                 </Button>
@@ -693,7 +693,7 @@ export default function HomePage() {
             </div>
 
             {/* Subtle Trust Counter */}
-            <p className="text-[11px] sm:text-xs text-emerald-200/60 font-medium pt-2">
+            <p className="text-[11px] sm:text-xs text-emerald-200/60 font-normal pt-2">
               ✨ Trusted by 12,000+ Property Owners, Top Developers &amp; HNIs across Mumbai, Delhi NCR, Bangalore &amp; Pune
             </p>
           </div>
