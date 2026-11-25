@@ -169,24 +169,24 @@ function NewsContent() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-8 sm:space-y-10 min-w-0">
         {/* Breadcrumb & Header */}
         <div className="space-y-3 min-w-0">
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-semibold text-stone-500">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-medium text-stone-500">
             <Link href="/" className="hover:text-[#064B25]">Home</Link>
             <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-[#064B25] font-bold">News &amp; Market Insights</span>
+            <span className="text-[#064B25] font-medium">News &amp; Market Insights</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200 pb-6 min-w-0">
             <div className="min-w-0">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-6 h-0.5 bg-[#064B25] shrink-0" />
-                <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#064B25]">
+                <span className="text-[11px] sm:text-xs font-medium uppercase tracking-wider text-[#064B25]">
                   Guardian Property Experts Research
                 </span>
               </div>
-              <h1 className="text-xl sm:text-4xl font-black text-[#202820] tracking-tight break-words">
+              <h1 className="text-xl sm:text-4xl font-semibold text-[#202820] tracking-tight break-words">
                 Real Estate News, Trends &amp; Intelligence
               </h1>
-              <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-2xl font-medium">
+              <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-2xl font-normal">
                 Verified market updates, price appreciation indices, RERA regulatory audits, and institutional advisory for smart home buyers and investors.
               </p>
             </div>
@@ -199,7 +199,7 @@ function NewsContent() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search research &amp; updates..."
-                className="w-full pl-9 pr-4 py-2 rounded-full border border-stone-200 bg-white text-xs font-medium text-stone-800 focus:outline-none focus:border-[#064B25] shadow-2xs"
+                className="w-full pl-9 pr-4 py-2 rounded-full border border-stone-200 bg-white text-xs font-normal text-stone-800 focus:outline-none focus:border-[#064B25] shadow-2xs"
               />
             </div>
           </div>
@@ -215,7 +215,7 @@ function NewsContent() {
                 key={c.id}
                 type="button"
                 onClick={() => setActiveCategory(c.id)}
-                className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium transition-all cursor-pointer ${
                   isActive
                     ? "bg-[#064B25] text-white shadow-xs"
                     : "bg-white text-stone-700 hover:text-[#064B25] hover:bg-stone-100 border border-stone-200"
@@ -238,15 +238,15 @@ function NewsContent() {
                 fill
                 className="object-cover group-hover:scale-102 transition-transform duration-500"
               />
-              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#064B25] text-white text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-full shadow-md">
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#064B25] text-white text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-full shadow-md">
                 Featured Report
               </div>
             </div>
 
             <div className="lg:col-span-5 p-4 sm:p-8 flex flex-col justify-between space-y-4 min-w-0">
               <div className="space-y-3 min-w-0">
-                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs text-stone-500 font-semibold">
-                  <span className="text-[#064B25] font-black uppercase tracking-wider">{featured.categoryLabel}</span>
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs text-stone-500 font-normal">
+                  <span className="text-[#064B25] font-medium uppercase tracking-wider">{featured.categoryLabel}</span>
                   <span>&bull;</span>
                   <span className="flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5 shrink-0" />
@@ -259,7 +259,7 @@ function NewsContent() {
                   </span>
                 </div>
 
-                <h2 className="text-base sm:text-2xl font-black text-[#202820] leading-snug group-hover:text-[#064B25] transition-colors break-words">
+                <h2 className="text-base sm:text-2xl font-semibold text-[#202820] leading-snug group-hover:text-[#064B25] transition-colors break-words">
                   {featured.title}
                 </h2>
 
@@ -270,11 +270,11 @@ function NewsContent() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <div className="text-xs font-bold text-stone-900">{featured.author}</div>
-                  <div className="text-[11px] text-stone-500">{featured.authorRole}</div>
+                  <div className="text-xs font-medium text-stone-900">{featured.author}</div>
+                  <div className="text-[11px] text-stone-500 font-normal">{featured.authorRole}</div>
                 </div>
 
-                <Button className="bg-[#064B25] hover:bg-[#003D1C] text-white font-bold text-xs rounded-full px-5 h-9 shrink-0">
+                <Button className="bg-[#064B25] hover:bg-[#003D1C] text-white font-medium text-xs rounded-full px-5 h-9 shrink-0">
                   Read Report
                 </Button>
               </div>
@@ -287,14 +287,14 @@ function NewsContent() {
           <section className="bg-white rounded-3xl p-4 sm:p-8 border border-[#E5EAE5] shadow-xs space-y-5 min-w-0 w-full overflow-hidden">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-100 pb-4">
               <div className="min-w-0">
-                <div className="text-xs font-black text-[#064B25] uppercase tracking-wider">
+                <div className="text-xs font-medium text-[#064B25] uppercase tracking-wider">
                   Live Market Benchmark
                 </div>
-                <h3 className="text-base sm:text-xl font-black text-[#202820]">
+                <h3 className="text-base sm:text-xl font-semibold text-[#202820]">
                   City Price Index &amp; Appreciation Rates
                 </h3>
               </div>
-              <span className="text-xs text-stone-500 font-semibold bg-stone-100 px-3 py-1 rounded-full self-start shrink-0">
+              <span className="text-xs text-stone-500 font-medium bg-stone-100 px-3 py-1 rounded-full self-start shrink-0">
                 Updated Q4 2026
               </span>
             </div>
@@ -302,7 +302,7 @@ function NewsContent() {
             <div className="overflow-x-auto w-full max-w-full">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-stone-200 text-stone-500 font-bold uppercase tracking-wider text-[10px]">
+                  <tr className="border-b border-stone-200 text-stone-500 font-medium uppercase tracking-wider text-[10px]">
                     <th className="py-3 px-3">City</th>
                     <th className="py-3 px-3">Micro-Market</th>
                     <th className="py-3 px-3">Avg Rate (per sq.ft)</th>
@@ -311,16 +311,16 @@ function NewsContent() {
                     <th className="py-3 px-3">Demand Velocity</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-stone-100 font-medium text-stone-800">
+                <tbody className="divide-y divide-stone-100 font-normal text-stone-800">
                   {CITY_PRICE_INDEX_DATA.map((row, idx) => (
                     <tr key={idx} className="hover:bg-[#F0F7F0]/60 transition">
-                      <td className="py-3 px-3 font-bold text-[#064B25]">{row.city}</td>
+                      <td className="py-3 px-3 font-medium text-[#064B25]">{row.city}</td>
                       <td className="py-3 px-3">{row.microMarket}</td>
-                      <td className="py-3 px-3 font-bold">{row.avgRate}</td>
-                      <td className="py-3 px-3 font-bold text-emerald-600">{row.yoyGrowth}</td>
+                      <td className="py-3 px-3 font-medium">{row.avgRate}</td>
+                      <td className="py-3 px-3 font-medium text-emerald-600">{row.yoyGrowth}</td>
                       <td className="py-3 px-3">{row.yield}</td>
                       <td className="py-3 px-3">
-                        <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">
+                        <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-medium text-[10px]">
                           {row.demand}
                         </span>
                       </td>
@@ -334,7 +334,7 @@ function NewsContent() {
 
         {/* Articles Grid */}
         <div className="space-y-4">
-          <h3 className="text-lg sm:text-xl font-black text-[#202820]">
+          <h3 className="text-lg sm:text-xl font-semibold text-[#202820]">
             {activeCategory === "all" ? "Latest Articles & Advisory" : `${categories.find(c => c.id === activeCategory)?.label}`}
           </h3>
 
@@ -352,19 +352,19 @@ function NewsContent() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#064B25] font-black text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs">
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#064B25] font-medium text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs">
                       {article.categoryLabel}
                     </span>
                   </div>
 
                   <div className="p-5 space-y-2.5">
-                    <div className="flex items-center gap-2 text-[11px] text-stone-400 font-semibold">
+                    <div className="flex items-center gap-2 text-[11px] text-stone-400 font-normal">
                       <span>{article.date}</span>
                       <span>&bull;</span>
                       <span>{article.readTime}</span>
                     </div>
 
-                    <h4 className="text-sm font-black text-[#202820] leading-snug group-hover:text-[#064B25] transition line-clamp-2">
+                    <h4 className="text-sm font-semibold text-[#202820] leading-snug group-hover:text-[#064B25] transition line-clamp-2">
                       {article.title}
                     </h4>
 
@@ -376,8 +376,8 @@ function NewsContent() {
 
                 <div className="p-5 pt-0 border-t border-stone-50 flex items-center justify-between text-xs">
                   <div>
-                    <span className="font-bold text-stone-800">{article.author}</span>
-                    <span className="block text-[10px] text-stone-400">{article.authorRole}</span>
+                    <span className="font-medium text-stone-800">{article.author}</span>
+                    <span className="block text-[10px] text-stone-400 font-normal">{article.authorRole}</span>
                   </div>
 
                   <button
@@ -395,25 +395,25 @@ function NewsContent() {
         {/* Real Estate Intelligence Advisory Banner */}
         <div className="rounded-3xl bg-[#064B25] p-5 sm:p-10 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 min-w-0">
           <div className="space-y-2 max-w-xl min-w-0">
-            <span className="text-xs font-black uppercase tracking-wider text-emerald-300">
+            <span className="text-xs font-medium uppercase tracking-wider text-emerald-300">
               Institutional Advisory
             </span>
-            <h3 className="text-lg sm:text-2xl font-black break-words">
+            <h3 className="text-lg sm:text-2xl font-semibold break-words">
               Need Confidential Portfolio Valuation or RERA Title Search?
             </h3>
-            <p className="text-xs sm:text-sm text-emerald-100">
+            <p className="text-xs sm:text-sm text-emerald-100 font-normal">
               Our in-house legal advocates and market intelligence desk provide verified title opinions, NRI repatriation advisory, and transaction facilitation.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full md:w-auto">
             <Link href="/services/stamp-duty" className="w-full sm:w-auto">
-              <Button variant="outline" className="w-full sm:w-auto text-xs font-bold bg-white text-[#064B25] hover:bg-emerald-50 rounded-full h-10 sm:h-11 px-5 sm:px-6">
+              <Button variant="outline" className="w-full sm:w-auto text-xs font-medium bg-white text-[#064B25] hover:bg-emerald-50 rounded-full h-10 sm:h-11 px-5 sm:px-6">
                 Calculate Stamp Duty
               </Button>
             </Link>
             <Link href="/services/home-loan" className="w-full sm:w-auto">
-              <Button className="w-full sm:w-auto text-xs font-bold bg-emerald-500 hover:bg-emerald-600 text-white rounded-full h-10 sm:h-11 px-5 sm:px-6">
+              <Button className="w-full sm:w-auto text-xs font-medium bg-emerald-500 hover:bg-emerald-600 text-white rounded-full h-10 sm:h-11 px-5 sm:px-6">
                 Loan Assistance
               </Button>
             </Link>
@@ -428,7 +428,7 @@ function NewsContent() {
 
 export default function NewsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xs font-bold text-stone-500">Loading Insights...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xs font-medium text-stone-500">Loading Insights...</div>}>
       <NewsContent />
     </Suspense>
   );
