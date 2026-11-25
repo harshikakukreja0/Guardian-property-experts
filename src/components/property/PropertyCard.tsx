@@ -10,16 +10,9 @@ import {
   Bath,
   Maximize2,
   ShieldCheck,
-  Phone,
-  Eye,
-  CheckCircle,
-  Share2,
   Calendar,
-  Sparkles,
 } from "lucide-react";
 import { PropertyItem } from "@/types/property.types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/authStore";
 import { formatArea } from "@/utils/formatters";
 import { ScheduleVisitModal } from "./ScheduleVisitModal";
@@ -27,18 +20,7 @@ import { ScheduleVisitModal } from "./ScheduleVisitModal";
 export function PropertyCard({ property }: { property: PropertyItem }) {
   const { savedPropertyIds, toggleSaveProperty } = useAuthStore();
   const isSaved = savedPropertyIds.includes(property.id);
-  const [copied, setCopied] = useState(false);
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
-
-  const handleShare = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (typeof window !== "undefined") {
-      navigator.clipboard.writeText(`${window.location.origin}/property/${property.slug}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
 
   const handleSave = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,9 +30,9 @@ export function PropertyCard({ property }: { property: PropertyItem }) {
 
   return (
     <>
-      <div className="group rounded-3xl bg-white border border-stone-200 hover:border-[#65B32E] shadow-sm hover:shadow-[0_20px_50px_rgba(0,60,20,0.14)] transition-all duration-300 overflow-hidden flex flex-col justify-between">
-        {/* Property Image & Overlays */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+      <div className="group rounded-3xl bg-white border border-stone-200/80 hover:border-[#064B25]/40 shadow-xs hover:shadow-[0_20px_45px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+        {/* 1. Clean Visual Header (Minimal Overlays) */}
+        <Link href={`/property/${property.slug}`} className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100 block">
           <Image
             src={property.images[0] || "/images/architecture.jpg"}
             alt={property.title}
@@ -59,134 +41,116 @@ export function PropertyCard({ property }: { property: PropertyItem }) {
             className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15 pointer-events-none" />
 
-          {/* Top Badges */}
-          <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              {property.verificationStatus === "verified" && (
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#003C14] to-[#16852C] text-white text-[11px] font-black shadow-md backdrop-blur-md border border-[#65B32E]/30">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#65B32E]" />
-                  <span>RERA VERIFIED</span>
-                </div>
-              )}
-              <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider border border-white/20">
-                {property.status}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              <button
-                onClick={handleShare}
-                className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-stone-700 hover:text-[#004614] backdrop-blur-md flex items-center justify-center shadow-md transition"
-                title="Share listing"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={handleSave}
-                className={`w-8 h-8 rounded-full bg-white/90 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-md transition ${
-                  isSaved ? "text-rose-600" : "text-stone-700 hover:text-rose-600"
-                }`}
-                title={isSaved ? "Remove from saved" : "Save property"}
-              >
-                <Heart className={`w-4 h-4 ${isSaved ? "fill-rose-600" : ""}`} />
-              </button>
-            </div>
+          {/* Top Left: Single Verified Pill */}
+          <div className="absolute top-3 left-3 flex items-center gap-1.5">
+            {property.verificationStatus === "verified" && (
+              <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#064B25] text-[10px] font-bold shadow-xs">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#16803B]" />
+                <span>RERA Verified</span>
+              </div>
+            )}
           </div>
 
-          {/* Bottom Image Overlay: Price & Category */}
-          <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between text-white">
-            <div>
-              <div className="text-2xl font-black tracking-tight text-white drop-shadow-md">
-                {property.pricing.displayPrice}
-              </div>
-              {property.pricing.pricePerSqFt && (
-                <div className="text-[11px] text-[#86efac] font-bold drop-shadow">
-                  ₹{property.pricing.pricePerSqFt.toLocaleString("en-IN")}/sq.ft.
-                </div>
-              )}
-            </div>
-            <span className="text-[11px] bg-[#002D0F]/70 backdrop-blur-md border border-[#65B32E]/40 px-2.5 py-0.5 rounded-full text-white font-bold">
-              {property.category}
+          {/* Top Right: Save Heart Button */}
+          <button
+            type="button"
+            onClick={handleSave}
+            className={`absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white backdrop-blur-md flex items-center justify-center shadow-xs transition cursor-pointer ${
+              isSaved ? "text-rose-600" : "text-stone-600 hover:text-rose-600"
+            }`}
+            title={isSaved ? "Remove from saved" : "Save property"}
+          >
+            <Heart className={`w-4 h-4 ${isSaved ? "fill-rose-600" : ""}`} />
+          </button>
+
+          {/* Bottom Left: Subtle Status Tag */}
+          <div className="absolute bottom-3 left-3">
+            <span className="px-2.5 py-0.5 rounded-full bg-black/55 backdrop-blur-md text-white text-[10px] font-semibold tracking-wide">
+              {property.status}
             </span>
           </div>
-        </div>
+        </Link>
 
-        {/* Property Details Body */}
-        <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+        {/* 2. Spacious & Minimal Card Body */}
+        <div className="p-5 flex-1 flex flex-col justify-between space-y-3.5">
           <div className="space-y-1.5">
-            {/* Locality */}
-            <div className="flex items-center gap-1 text-xs text-stone-500 font-bold truncate">
-              <MapPin className="w-3.5 h-3.5 text-[#004614] shrink-0" />
-              <span className="truncate">
-                {property.location.locality}, {property.location.city}
+            {/* Price & Category Row */}
+            <div className="flex items-baseline justify-between gap-2">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-lg sm:text-xl font-black tracking-tight text-[#064B25]">
+                  {property.pricing.displayPrice}
+                </span>
+                {property.pricing.pricePerSqFt && (
+                  <span className="text-[11px] text-stone-400 font-medium">
+                    ₹{property.pricing.pricePerSqFt.toLocaleString("en-IN")}/sq.ft
+                  </span>
+                )}
+              </div>
+              <span className="text-[10px] font-semibold text-stone-600 bg-stone-100 px-2.5 py-0.5 rounded-full shrink-0">
+                {property.category}
               </span>
             </div>
 
             {/* Title */}
             <Link href={`/property/${property.slug}`}>
-              <h3 className="text-base font-bold text-stone-900 group-hover:text-[#004614] line-clamp-1 transition leading-snug">
+              <h3 className="text-sm sm:text-base font-bold text-stone-900 group-hover:text-[#064B25] line-clamp-1 transition-colors leading-snug">
                 {property.title}
               </h3>
             </Link>
 
-            {/* Subtitle */}
-            <p className="text-xs text-stone-500 line-clamp-1 font-normal">
-              {property.tagline}
-            </p>
+            {/* Locality */}
+            <div className="flex items-center gap-1 text-xs text-stone-500 font-medium">
+              <MapPin className="w-3.5 h-3.5 text-[#064B25] shrink-0" />
+              <span className="truncate">
+                {property.location.locality}, {property.location.city}
+              </span>
+            </div>
           </div>
 
-          {/* Key Metrics: BHK, Bath, Area */}
-          <div className="grid grid-cols-3 gap-2 py-3 border-y border-stone-100 text-stone-800 text-xs font-bold">
+          {/* Clean Inline Specs (Zero Truncation) */}
+          <div className="flex items-center justify-between py-2.5 border-y border-stone-100 text-xs font-semibold text-stone-700">
             <div className="flex items-center gap-1.5">
-              <div className="w-6 h-6 rounded-lg bg-emerald-50 text-[#004614] flex items-center justify-center shrink-0">
-                <Bed className="w-3.5 h-3.5" />
-              </div>
-              <span>{property.details.bhk > 0 ? `${property.details.bhk} BHK` : "Comm"}</span>
+              <Bed className="w-3.5 h-3.5 text-[#064B25]" />
+              <span>{property.details.bhk > 0 ? `${property.details.bhk} BHK` : "Commercial"}</span>
             </div>
+            <span className="text-stone-300">&bull;</span>
             <div className="flex items-center gap-1.5">
-              <div className="w-6 h-6 rounded-lg bg-emerald-50 text-[#004614] flex items-center justify-center shrink-0">
-                <Bath className="w-3.5 h-3.5" />
-              </div>
+              <Bath className="w-3.5 h-3.5 text-[#064B25]" />
               <span>{property.details.bathrooms} Baths</span>
             </div>
+            <span className="text-stone-300">&bull;</span>
             <div className="flex items-center gap-1.5">
-              <div className="w-6 h-6 rounded-lg bg-emerald-50 text-[#004614] flex items-center justify-center shrink-0">
-                <Maximize2 className="w-3.5 h-3.5" />
-              </div>
-              <span className="truncate">{formatArea(property.details.carpetArea)}</span>
+              <Maximize2 className="w-3.5 h-3.5 text-[#064B25]" />
+              <span>{formatArea(property.details.carpetArea)}</span>
             </div>
           </div>
 
-          {/* Seller Tag & Action Buttons */}
-          <div className="pt-1 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2 truncate">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#003C14] to-[#16852C] text-white flex items-center justify-center text-xs font-bold shrink-0">
-                {property.seller.name.charAt(0)}
-              </div>
-              <div className="flex flex-col truncate">
-                <span className="text-xs font-bold text-stone-900 truncate">
-                  {property.seller.companyName || property.seller.name}
-                </span>
-                <span className="text-[10px] text-[#004614] font-black uppercase tracking-wide">
-                  {property.seller.type}
-                </span>
-              </div>
+          {/* Minimal Footer: Seller Info & Actions */}
+          <div className="flex items-center justify-between gap-2 pt-0.5">
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-stone-800 truncate">
+                {property.seller.companyName || property.seller.name}
+              </p>
+              <p className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider">
+                {property.seller.type}
+              </p>
             </div>
 
             <div className="flex items-center gap-1.5 shrink-0">
               <button
+                type="button"
                 onClick={() => setScheduleModalOpen(true)}
-                className="p-2 rounded-xl bg-emerald-50 hover:bg-[#65B32E]/20 text-[#004614] transition"
+                className="p-2 rounded-full bg-stone-50 hover:bg-[#F0F7F0] text-stone-600 hover:text-[#064B25] transition cursor-pointer"
                 title="Schedule Tour"
               >
                 <Calendar className="w-4 h-4" />
               </button>
               <Link href={`/property/${property.slug}`}>
-                <Button size="sm" variant="default" className="text-xs px-3.5 py-1.5 h-9 font-bold rounded-xl shadow-xs">
+                <span className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-[#064B25] hover:bg-[#003D1C] text-white text-xs font-bold transition shadow-xs">
                   View Home
-                </Button>
+                </span>
               </Link>
             </div>
           </div>
