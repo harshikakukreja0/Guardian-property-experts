@@ -598,7 +598,7 @@ export default function HomePage() {
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="p-8 rounded-3xl bg-white border border-[#E5EAE5] shadow-xs flex flex-col justify-between space-y-4"
+                className="group p-8 rounded-3xl bg-white border border-[#E5EAE5] shadow-xs hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] hover:border-stone-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-4"
               >
                 <div className="flex items-center gap-1 text-amber-500">
                   {[...Array(t.rating)].map((_, i) => (
@@ -614,10 +614,10 @@ export default function HomePage() {
                     alt={t.name}
                     width={44}
                     height={44}
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover ring-2 ring-stone-100 group-hover:ring-[#064B25]/20 transition-all"
                   />
                   <div>
-                    <h4 className="text-xs font-bold text-[#202820]">{t.name}</h4>
+                    <h4 className="text-xs font-bold text-[#202820] group-hover:text-[#064B25] transition-colors">{t.name}</h4>
                     <p className="text-[11px] text-stone-500">{t.role}</p>
                   </div>
                 </div>
