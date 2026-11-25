@@ -56,23 +56,24 @@ export default function CommercialPage() {
       <MainHeader />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
-        <div className="mb-6 space-y-1">
+        {/* Page Header Composition */}
+        <div className="mb-6 sm:mb-8 space-y-2 sm:space-y-2.5">
+          {/* Breadcrumbs */}
           <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
-            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium">
+            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium transition-colors">
               Home
             </Link>
-            <span>&bull;</span>
-            <span>Commercial Real Estate {city !== "All Cities" ? ` • in ${city}` : ""}</span>
+            <span className="text-stone-400">&bull;</span>
+            <span className="text-stone-600 font-medium">Commercial Real Estate {city !== "All Cities" ? ` • in ${city}` : ""}</span>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
-              Commercial Offices &amp; Retail Spaces {city !== "All Cities" ? `in ${city}` : "Across India"}
-            </h1>
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
-              Grade A Tech Parks
-            </span>
-          </div>
-          <p className="text-xs text-stone-500">
+
+          {/* Main Heading */}
+          <h1 className="text-[23px] min-[360px]:text-[25px] sm:text-3xl lg:text-[34px] font-bold text-stone-900 tracking-tight leading-[1.25] break-words">
+            Commercial Offices &amp; Retail Spaces {city !== "All Cities" ? `in ${city}` : "Across India"}
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-[13px] sm:text-[15px] text-stone-500 font-normal leading-relaxed max-w-3xl">
             Showing {filteredProperties.length} verified commercial office plates, corporate IT parks and high-street retail shops
           </p>
         </div>
