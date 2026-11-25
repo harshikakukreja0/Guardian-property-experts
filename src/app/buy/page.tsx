@@ -6,6 +6,7 @@ import { MainFooter } from "@/components/common/MainFooter";
 import { AdvancedFilters } from "@/components/property/AdvancedFilters";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { PropertyMap } from "@/components/property/PropertyMap";
+import { SortDropdown } from "@/components/property/SortDropdown";
 import { useFilterStore } from "@/store/filterStore";
 import { MOCK_PROPERTIES } from "@/services/mock/properties.data";
 import { LayoutGrid, Map, ArrowUpDown, SlidersHorizontal } from "lucide-react";
@@ -127,21 +128,17 @@ export default function BuyPage() {
           </button>
 
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-2 text-xs">
-            <ArrowUpDown className="w-4 h-4 text-stone-400" />
-            <span className="text-stone-500 font-semibold hidden sm:inline">Sort By:</span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="h-9 px-3 rounded-xl border border-stone-200 bg-stone-50 text-stone-800 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-gpe-emerald"
-            >
-              <option value="relevance">Most Relevant</option>
-              <option value="latest">Newly Listed</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="popular">Most Popular</option>
-            </select>
-          </div>
+          <SortDropdown
+            value={sortBy}
+            onChange={setSortBy}
+            options={[
+              { value: "relevance", label: "Most Relevant" },
+              { value: "latest", label: "Newly Listed" },
+              { value: "price-asc", label: "Price: Low to High" },
+              { value: "price-desc", label: "Price: High to Low" },
+              { value: "popular", label: "Most Popular" },
+            ]}
+          />
 
           {/* List vs Map View Toggle */}
           <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl max-w-full">
