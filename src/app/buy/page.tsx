@@ -124,7 +124,7 @@ export default function BuyPage() {
           {/* Mobile Filter Toggle Button */}
           <button
             onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-            className="lg:hidden flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-200 text-xs font-semibold text-stone-700"
+            className="lg:hidden flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-700"
           >
             <SlidersHorizontal className="w-4 h-4 text-gpe-forest" />
             <span>Filters</span>
@@ -147,8 +147,8 @@ export default function BuyPage() {
           <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl max-w-full">
             <button
               onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === "list" ? "bg-white text-gpe-forest shadow-xs font-bold" : "text-stone-600"
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+                viewMode === "list" ? "bg-white text-gpe-forest shadow-xs font-semibold" : "text-stone-600"
               }`}
             >
               <LayoutGrid className="w-3.5 h-3.5 shrink-0" />
@@ -156,8 +156,8 @@ export default function BuyPage() {
             </button>
             <button
               onClick={() => setViewMode("map")}
-              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === "map" ? "bg-white text-gpe-forest shadow-xs font-bold" : "text-stone-600"
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+                viewMode === "map" ? "bg-white text-gpe-forest shadow-xs font-semibold" : "text-stone-600"
               }`}
             >
               <Map className="w-3.5 h-3.5 shrink-0" />
@@ -179,7 +179,7 @@ export default function BuyPage() {
               <div className="fixed inset-0 bg-black/60" onClick={() => setMobileFilterOpen(false)} />
               <div className="relative w-80 max-w-[85vw] h-full bg-white p-4 overflow-y-auto z-10 shadow-2xl">
                 <AdvancedFilters />
-                <Button onClick={() => setMobileFilterOpen(false)} className="w-full mt-4">
+                <Button onClick={() => setMobileFilterOpen(false)} className="w-full mt-4 font-medium">
                   Apply Filters
                 </Button>
               </div>
@@ -198,10 +198,10 @@ export default function BuyPage() {
               </div>
             ) : (
               <div className="bg-white rounded-2xl border border-stone-200 p-12 text-center space-y-4">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 text-gpe-emerald mx-auto flex items-center justify-center font-bold text-xl">
+                <div className="w-16 h-16 rounded-full bg-emerald-50 text-gpe-emerald mx-auto flex items-center justify-center font-semibold text-xl">
                   🏡
                 </div>
-                <h3 className="text-lg font-bold text-stone-900">No Properties Found</h3>
+                <h3 className="text-lg font-semibold text-stone-900">No Properties Found</h3>
                 <p className="text-xs text-stone-500 max-w-sm mx-auto">
                   We couldn&apos;t find any verified listings matching your specific filter criteria. Try resetting the filters or selecting another city.
                 </p>

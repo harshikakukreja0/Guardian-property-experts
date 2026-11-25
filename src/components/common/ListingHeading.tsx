@@ -36,7 +36,7 @@ export function ListingHeading({
                     {item.label}
                   </Link>
                 ) : (
-                  <span className={isLast ? "text-stone-700 font-semibold" : ""}>
+                  <span className={isLast ? "text-stone-700 font-medium" : ""}>
                     {item.label}
                   </span>
                 )}
@@ -48,7 +48,7 @@ export function ListingHeading({
       </nav>
 
       {/* Main Page Heading */}
-      <h1 className="text-[23px] min-[360px]:text-[26px] sm:text-[34px] font-bold text-stone-900 tracking-tight leading-[1.25] sm:leading-[1.2] break-words">
+      <h1 className="text-[23px] min-[360px]:text-[26px] sm:text-[34px] font-semibold text-stone-900 tracking-tight leading-[1.25] sm:leading-[1.2] break-words">
         {title}
       </h1>
 
