@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { MainHeader } from "@/components/common/MainHeader";
 import { MainFooter } from "@/components/common/MainFooter";
 import { ProjectCard } from "@/components/project/ProjectCard";
@@ -29,7 +30,13 @@ export default function ProjectsPage() {
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 min-w-0">
         <div className="space-y-2">
-          <div className="text-xs text-stone-500">Home &bull; New Residential Projects</div>
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
+            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium">
+              Home
+            </Link>
+            <span>&bull;</span>
+            <span>New Residential Projects</span>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
               Trending New Residential Projects

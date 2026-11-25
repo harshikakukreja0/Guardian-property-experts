@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
 import { MainHeader } from "@/components/common/MainHeader";
 import { MainFooter } from "@/components/common/MainFooter";
 import { AdvancedFilters } from "@/components/property/AdvancedFilters";
@@ -105,8 +106,12 @@ export default function BuyPage() {
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
         {/* Page Title & Breadcrumbs */}
         <div className="mb-6 space-y-1">
-          <div className="text-xs text-stone-500">
-            Home &bull; Properties for Sale {city !== "All Cities" ? ` • in ${city}` : ""}
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
+            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium">
+              Home
+            </Link>
+            <span>&bull;</span>
+            <span>Properties for Sale {city !== "All Cities" ? ` • in ${city}` : ""}</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
             Properties for Sale {city !== "All Cities" ? `in ${city}` : "Across India"}

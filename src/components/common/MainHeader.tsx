@@ -157,15 +157,15 @@ export function MainHeader() {
       >
         <div className="max-w-7xl mx-auto px-2 min-[360px]:px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-1.5 sm:gap-3">
           {/* ── 1. LEFT: Brand Logo with Soft Frosted Gradient Pill (Snug & Fitted) ── */}
-          <Link href="/" className="flex items-center group shrink-0" title="Guardian Property Experts Home">
-            <div className="relative inline-flex items-center px-2 min-[360px]:px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-white/95 via-white/90 to-white/85 backdrop-blur-md shadow-xs border border-white/80 transition-transform duration-150 group-hover:scale-[1.02]">
+          <Link href="/" className="flex items-center group shrink-0 cursor-pointer" title="Guardian Property Experts Home">
+            <div className="relative inline-flex items-center px-2 min-[360px]:px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-white/95 via-white/90 to-white/85 backdrop-blur-md shadow-xs border border-white/80 transition-transform duration-150 group-hover:scale-[1.02] pointer-events-none">
               <div className="relative h-6 min-[360px]:h-7 sm:h-8 w-[82px] min-[360px]:w-[105px] sm:w-[118px]">
                 <Image
                   src="/logo/guardian-logo-tight.png"
                   alt="Guardian Property Experts"
                   fill
                   sizes="(max-width: 360px) 82px, (max-width: 640px) 105px, 118px"
-                  className="object-contain object-center"
+                  className="object-contain object-center pointer-events-none"
                   priority
                 />
               </div>
@@ -823,6 +823,7 @@ export function MainHeader() {
               <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1.5 px-1">Navigation</div>
               <div className="grid grid-cols-2 gap-2">
                 {[
+                  { label: "Home", href: "/" },
                   { label: "Buy Properties", href: "/buy" },
                   { label: "Rent Homes", href: "/rent" },
                   { label: "Commercial", href: "/commercial" },
