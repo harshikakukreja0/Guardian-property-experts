@@ -303,43 +303,43 @@ function NewsContent() {
 
         {/* City Price Index Table Section */}
         {(activeCategory === "all" || activeCategory === "price-index") && (
-          <section className="bg-white rounded-xl p-5 sm:p-7 border border-stone-200 space-y-5 min-w-0 w-full overflow-hidden">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-stone-100 pb-4">
-              <div className="space-y-1 min-w-0">
-                <div className="text-[11px] font-medium text-[#064B25] uppercase tracking-widest">
+          <section className="bg-white rounded-xl p-3.5 sm:p-6 border border-stone-200 space-y-3.5 sm:space-y-4 min-w-0 w-full overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-stone-100 pb-3">
+              <div className="space-y-0.5 min-w-0">
+                <div className="text-[10px] sm:text-[11px] font-medium text-[#064B25] uppercase tracking-widest">
                   Live Market Benchmark
                 </div>
-                <h2 className="text-lg sm:text-xl font-semibold text-stone-900 tracking-tight">
+                <h2 className="text-base sm:text-lg font-semibold text-stone-900 tracking-tight">
                   City Price Index &amp; Appreciation Rates
                 </h2>
               </div>
-              <span className="text-[11px] text-stone-500 font-normal bg-stone-50 border border-stone-200 px-2.5 py-1 rounded-md self-start shrink-0">
+              <span className="text-[10px] sm:text-[11px] text-stone-500 font-normal bg-stone-50 border border-stone-200 px-2.5 py-0.5 rounded-md self-start shrink-0">
                 Updated Q4 2026
               </span>
             </div>
 
-            <div className="overflow-x-auto w-full max-w-full">
-              <table className="w-full text-left text-xs">
+            <div className="overflow-x-auto scrollbar-none w-full max-w-full">
+              <table className="w-full text-left text-[11px] sm:text-xs">
                 <thead>
-                  <tr className="border-b border-stone-200 text-stone-500 font-medium uppercase tracking-wider text-[10px]">
-                    <th className="py-3 px-3">City</th>
-                    <th className="py-3 px-3">Micro-Market</th>
-                    <th className="py-3 px-3">Avg Rate (per sq.ft)</th>
-                    <th className="py-3 px-3">YoY Appreciation</th>
-                    <th className="py-3 px-3">Gross Yield</th>
-                    <th className="py-3 px-3">Demand Velocity</th>
+                  <tr className="border-b border-stone-200 text-stone-500 font-medium uppercase tracking-wider text-[9px] sm:text-[10px]">
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">City</th>
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">Micro-Market</th>
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">Avg Rate</th>
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">YoY Growth</th>
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">Yield</th>
+                    <th className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">Demand</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100 font-normal text-stone-700">
                   {CITY_PRICE_INDEX_DATA.map((row, idx) => (
                     <tr key={idx} className="hover:bg-stone-50/80 transition-colors">
-                      <td className="py-3 px-3 font-medium text-stone-900">{row.city}</td>
-                      <td className="py-3 px-3">{row.microMarket}</td>
-                      <td className="py-3 px-3 font-medium text-stone-900">{row.avgRate}</td>
-                      <td className="py-3 px-3 font-medium text-[#064B25]">{row.yoyGrowth}</td>
-                      <td className="py-3 px-3">{row.yield}</td>
-                      <td className="py-3 px-3">
-                        <span className="inline-block px-2 py-0.5 rounded bg-stone-100 text-stone-700 font-medium text-[10px]">
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 font-medium text-stone-900 whitespace-nowrap">{row.city}</td>
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">{row.microMarket}</td>
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 font-medium text-stone-900 whitespace-nowrap">{row.avgRate}</td>
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 font-medium text-[#064B25] whitespace-nowrap">{row.yoyGrowth}</td>
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">{row.yield}</td>
+                      <td className="py-2 px-2 sm:py-2.5 sm:px-3 whitespace-nowrap">
+                        <span className="inline-block px-2 py-0.5 rounded bg-stone-100 text-stone-700 font-medium text-[9px] sm:text-[10px]">
                           {row.demand}
                         </span>
                       </td>
