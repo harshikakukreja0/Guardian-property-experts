@@ -428,16 +428,16 @@ export default function HomePage() {
         </section>
 
         {/* ── 7. INTERACTIVE HOME LOAN & INVESTMENT EMI HIGHLIGHT ── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="rounded-3xl bg-gradient-to-br from-[#003D1C] via-[#064B25] to-[#00280D] text-white p-8 sm:p-12 shadow-2xl border border-emerald-400/20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-6 space-y-6">
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-10 sm:py-20 w-full min-w-0">
+          <div className="rounded-3xl bg-gradient-to-br from-[#003D1C] via-[#064B25] to-[#00280D] text-white p-4 min-[360px]:p-6 sm:p-10 lg:p-12 shadow-2xl border border-emerald-400/20 min-w-0">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center min-w-0">
+              <div className="lg:col-span-6 space-y-5 sm:space-y-6 min-w-0">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-black border border-emerald-400/30">
                   <Calculator className="w-4 h-4 text-[#65B52E]" />
                   <span>Financial Intelligence</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight break-words">
                   Calculate Your Home Loan &amp; Investment EMI
                 </h2>
 
@@ -498,32 +498,32 @@ export default function HomePage() {
               </div>
 
               {/* EMI Output Card */}
-              <div className="lg:col-span-6 bg-black/40 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 space-y-6">
-                <div className="text-center pb-6 border-b border-white/10">
-                  <span className="text-xs uppercase font-black tracking-widest text-[#65B52E]">
+              <div className="lg:col-span-6 bg-black/40 backdrop-blur-xl border border-white/15 rounded-3xl p-4 min-[360px]:p-6 sm:p-8 space-y-5 sm:space-y-6 min-w-0">
+                <div className="text-center pb-5 sm:pb-6 border-b border-white/10">
+                  <span className="text-[10px] sm:text-xs uppercase font-black tracking-widest text-[#65B52E]">
                     Estimated Monthly EMI
                   </span>
-                  <div className="text-3xl sm:text-5xl font-black text-white mt-1">
+                  <div className="text-2xl min-[360px]:text-3xl sm:text-5xl font-black text-white mt-1 break-words">
                     ₹{emi.toLocaleString("en-IN")}
                   </div>
                   <span className="text-[11px] text-stone-300">per month</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
-                    <span className="text-[11px] text-stone-300 block font-semibold">Total Principal</span>
-                    <span className="text-sm font-bold text-white">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
+                <div className="grid grid-cols-1 min-[340px]:grid-cols-2 gap-2.5 sm:gap-4 text-center">
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
+                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-semibold">Total Principal</span>
+                    <span className="text-xs sm:text-sm font-bold text-white">₹{(loanAmount / 10000000).toFixed(2)} Cr</span>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
-                    <span className="text-[11px] text-stone-300 block font-semibold">Total Interest Payable</span>
-                    <span className="text-sm font-bold text-[#65B52E]">₹{(totalInterest / 10000000).toFixed(2)} Cr</span>
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-[#00280D]/80 border border-white/10">
+                    <span className="text-[10px] sm:text-[11px] text-stone-300 block font-semibold">Total Interest Payable</span>
+                    <span className="text-xs sm:text-sm font-bold text-[#65B52E]">₹{(totalInterest / 10000000).toFixed(2)} Cr</span>
                   </div>
                 </div>
 
                 <Link href="/services/home-loan" className="block pt-2">
-                  <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-bold h-12 rounded-2xl shadow-xl flex items-center justify-center gap-2 border border-emerald-400/40">
+                  <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-bold min-h-12 h-auto py-3 px-3 rounded-2xl shadow-xl flex items-center justify-center gap-2 border border-emerald-400/40 text-xs sm:text-sm whitespace-normal text-center leading-snug">
                     <span>Get Instant Home Loan Assistance</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 shrink-0" />
                   </Button>
                 </Link>
               </div>
