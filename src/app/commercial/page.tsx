@@ -8,6 +8,7 @@ import { AdvancedFilters } from "@/components/property/AdvancedFilters";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { PropertyMap } from "@/components/property/PropertyMap";
 import { SortDropdown } from "@/components/property/SortDropdown";
+import { ListingHeading } from "@/components/common/ListingHeading";
 import { useFilterStore } from "@/store/filterStore";
 import { MOCK_PROPERTIES } from "@/services/mock/properties.data";
 import { LayoutGrid, Map, ArrowUpDown, SlidersHorizontal, Briefcase } from "lucide-react";
@@ -56,27 +57,19 @@ export default function CommercialPage() {
       <MainHeader />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
-        {/* Page Header Composition */}
-        <div className="mb-6 sm:mb-8 space-y-2 sm:space-y-2.5">
-          {/* Breadcrumbs */}
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
-            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium transition-colors">
-              Home
-            </Link>
-            <span className="text-stone-400">&bull;</span>
-            <span className="text-stone-600 font-medium">Commercial Real Estate {city !== "All Cities" ? ` • in ${city}` : ""}</span>
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="text-[23px] min-[360px]:text-[25px] sm:text-3xl lg:text-[34px] font-bold text-stone-900 tracking-tight leading-[1.25] break-words">
-            Commercial Offices &amp; Retail Spaces {city !== "All Cities" ? `in ${city}` : "Across India"}
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-[13px] sm:text-[15px] text-stone-500 font-normal leading-relaxed max-w-3xl">
-            Showing {filteredProperties.length} verified commercial office plates, corporate IT parks and high-street retail shops
-          </p>
-        </div>
+        <ListingHeading
+          className="mb-6"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            {
+              label: `Commercial Real Estate${city !== "All Cities" ? ` • in ${city}` : ""}`,
+            },
+          ]}
+          title={`Commercial Offices & Retail Spaces ${
+            city !== "All Cities" ? `in ${city}` : "Across India"
+          }`}
+          description={`Showing ${filteredProperties.length} verified commercial office plates, corporate IT parks, grade-A tech campuses, and high-street retail spaces.`}
+        />
 
         <div className="bg-white rounded-2xl border border-stone-200/90 p-3 mb-6 flex flex-wrap items-center justify-between gap-3 shadow-xs">
           <button

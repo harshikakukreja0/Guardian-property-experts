@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MainHeader } from "@/components/common/MainHeader";
 import { MainFooter } from "@/components/common/MainFooter";
 import { BuilderCard } from "@/components/project/BuilderCard";
+import { ListingHeading } from "@/components/common/ListingHeading";
 import { MOCK_BUILDERS } from "@/services/mock/projects.data";
 import { ShieldCheck, Award } from "lucide-react";
 
@@ -14,26 +15,14 @@ export default function BuildersPage() {
       <MainHeader />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 min-w-0">
-        <div className="space-y-2">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
-            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium">
-              Home
-            </Link>
-            <span>&bull;</span>
-            <span>Featured Builders</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
-              A-Grade Real Estate Developers
-            </h1>
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
-              100% Tracked Delivery
-            </span>
-          </div>
-          <p className="text-xs sm:text-sm text-stone-500">
-            Browse corporate profiles, delivery track records, active projects and credentials of India&apos;s most esteemed developers.
-          </p>
-        </div>
+        <ListingHeading
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Featured Builders" },
+          ]}
+          title="A-Grade Real Estate Developers"
+          description="Browse corporate profiles, 100% tracked delivery records, active projects and credentials of India's most esteemed developers."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {MOCK_BUILDERS.map((builder) => (

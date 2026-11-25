@@ -8,6 +8,7 @@ import { AdvancedFilters } from "@/components/property/AdvancedFilters";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { PropertyMap } from "@/components/property/PropertyMap";
 import { SortDropdown } from "@/components/property/SortDropdown";
+import { ListingHeading } from "@/components/common/ListingHeading";
 import { useFilterStore } from "@/store/filterStore";
 import { MOCK_PROPERTIES } from "@/services/mock/properties.data";
 import { LayoutGrid, Map, ArrowUpDown, SlidersHorizontal } from "lucide-react";
@@ -96,21 +97,19 @@ export default function RentPage() {
       <MainHeader />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
-        <div className="mb-6 space-y-1">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs text-stone-500">
-            <Link href="/" className="hover:text-gpe-forest hover:underline font-medium">
-              Home
-            </Link>
-            <span>&bull;</span>
-            <span>Rental Properties {city !== "All Cities" ? ` • in ${city}` : ""}</span>
-          </div>
-          <h1 className="text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight break-words">
-            Properties for Rent {city !== "All Cities" ? `in ${city}` : "Across India"}
-          </h1>
-          <p className="text-xs text-stone-500">
-            Showing {filteredProperties.length} verified flats, penthouses and villas for rent with zero brokerage options
-          </p>
-        </div>
+        <ListingHeading
+          className="mb-6"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            {
+              label: `Rental Properties${city !== "All Cities" ? ` • in ${city}` : ""}`,
+            },
+          ]}
+          title={`Properties for Rent ${
+            city !== "All Cities" ? `in ${city}` : "Across India"
+          }`}
+          description={`Showing ${filteredProperties.length} verified flats, penthouses and luxury villas for rent with zero brokerage options.`}
+        />
 
         <div className="bg-white rounded-2xl border border-stone-200/90 p-3 mb-6 flex flex-wrap items-center justify-between gap-3 shadow-xs">
           <button
