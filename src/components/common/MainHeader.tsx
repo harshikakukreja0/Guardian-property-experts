@@ -89,22 +89,29 @@ export function MainHeader() {
   const selectedCity = city && city !== "All Cities" ? city : "Mumbai";
 
   useEffect(() => {
-    let ticking = false;
+    // Direct sync on mount and route change to avoid 1-frame flicker
+    setIsScrolled(window.scrollY > 50);
 
+    let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 40);
+          setIsScrolled(window.scrollY > 50);
           ticking = false;
         });
         ticking = true;
       }
     };
 
+    // Reset dropdowns and menus on route transition
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+    setUserMenuOpen(false);
+    setCityMenuOpen(false);
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const handleRoleSelect = (role: UserRole) => {
     switchRole(role);
@@ -131,8 +138,8 @@ export function MainHeader() {
     }, 180);
   };
 
-  // Determine header background
-  const isSolid = !isHomePage || isScrolled;
+  // Determine header background: transparent at top (scrollY <= 50), solid white when scrolled (> 50px) or mobile menu open
+  const isSolid = isScrolled || mobileMenuOpen;
 
   // Reusable Pill Class for Navbar Items (Clean, Minimal & Responsive)
   const getPillClass = (isActive: boolean = false) => {
@@ -149,7 +156,7 @@ export function MainHeader() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200 ease-out border-0 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out border-0 ${
           isSolid
             ? "bg-white/95 backdrop-blur-md shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] py-2 sm:py-2.5"
             : "bg-transparent py-2.5 sm:py-3.5 shadow-none"
