@@ -29,7 +29,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
         </div>
 
         <div className="absolute bottom-3 left-3 right-3 text-white">
-          <span className="text-[11px] text-[#6FCF97] font-medium tracking-wide uppercase">
+          <span className="text-[11px] text-[#D1D5DB] font-medium tracking-wide uppercase">
             By {project.builder.name}
           </span>
           <h3 className="text-lg font-bold text-white line-clamp-1">{project.title}</h3>
