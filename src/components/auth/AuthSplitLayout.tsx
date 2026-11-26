@@ -14,9 +14,9 @@ export function AuthSplitLayout({
   children,
 }: AuthSplitLayoutProps) {
   return (
-    <div className="min-h-dvh w-full grid grid-cols-1 lg:grid-cols-12 bg-white overflow-x-hidden">
-      {/* Left Showcase Section (~58-60% on desktop, full edge-to-edge coverage) */}
-      <div className="relative lg:col-span-7 w-full aspect-[16/9] lg:aspect-auto lg:min-h-dvh overflow-hidden bg-[#F7F1E7]">
+    <div className="min-h-dvh w-full flex flex-col lg:grid lg:grid-cols-12 bg-white overflow-x-hidden">
+      {/* Left Showcase Section (~58-60% on desktop, full uncropped artwork) */}
+      <div className="relative lg:col-span-7 w-full aspect-[16/9] lg:aspect-auto lg:min-h-dvh flex items-center justify-center overflow-hidden bg-[#FCF0E4]">
         <Link
           href="/"
           className="relative block w-full h-full"
@@ -28,7 +28,7 @@ export function AuthSplitLayout({
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
         </Link>
 
@@ -40,8 +40,8 @@ export function AuthSplitLayout({
         )}
       </div>
 
-      {/* Right Authentication Panel (~40% on desktop) */}
-      <div className="lg:col-span-5 flex flex-col justify-center items-center px-5 sm:px-10 lg:px-12 py-10 sm:py-12 bg-white min-w-0">
+      {/* Right Authentication Panel (~40-42% on desktop) */}
+      <div className="flex-1 lg:col-span-5 flex flex-col justify-center items-center px-5 sm:px-10 lg:px-12 py-8 sm:py-12 bg-white min-w-0">
         <div className="w-full max-w-md">{children}</div>
       </div>
     </div>
