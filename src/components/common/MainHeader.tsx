@@ -29,6 +29,7 @@ import {
   Check,
   LogIn,
   User,
+  CircleUser,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/authStore";
@@ -592,8 +593,8 @@ export function MainHeader() {
               </button>
             </Link>
 
-            {/* ── User Auth Controls: Sign In / Create Account + Profile Icon when logged out; Authenticated User Menu when logged in ── */}
-            <div ref={desktopUserMenuRef} className="relative flex items-center gap-1.5">
+            {/* ── User Auth Controls: Profile Icon (with Sign In / Create Account popover when logged out; dynamic user menu when logged in) ── */}
+            <div ref={desktopUserMenuRef} className="relative flex items-center">
               {isAuthenticated && user ? (
                 <>
                   <button
@@ -601,14 +602,14 @@ export function MainHeader() {
                     onClick={() => setUserMenuOpen((prev) => !prev)}
                     aria-expanded={userMenuOpen}
                     aria-haspopup="menu"
-                    className={`flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 xl:pl-2 xl:pr-3 xl:py-1 rounded-full font-medium text-xs shadow-xs transition cursor-pointer ${
+                    className={`flex items-center gap-1.5 h-10 pl-2 pr-2.5 rounded-full font-medium text-xs shadow-xs transition cursor-pointer ${
                       isSolid
                         ? "bg-[#F0F7F0] text-[#064B25] border border-stone-200 hover:border-[#064B25]/40"
                         : "bg-white/85 text-[#064B25] border border-white/70 backdrop-blur-md hover:bg-white"
                     }`}
                     aria-label="User Account Menu"
                   >
-                    <span className="w-5 h-5 rounded-full bg-[#064B25] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                    <span className="w-6 h-6 rounded-full bg-[#064B25] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
                       {(user.name?.trim()?.[0] || "U").toUpperCase()}
                     </span>
                     <span className="max-w-[85px] truncate text-stone-800 font-semibold">
@@ -670,28 +671,7 @@ export function MainHeader() {
                   )}
                 </>
               ) : (
-                <div className="flex items-center gap-1.5">
-                  <Link href="/auth/login">
-                    <button
-                      type="button"
-                      className={`px-3 py-1 xl:px-3.5 xl:py-1.5 rounded-full font-medium text-xs transition cursor-pointer ${
-                        isSolid
-                          ? "text-stone-700 hover:text-[#064B25] hover:bg-[#F0F7F0]"
-                          : "bg-white/85 hover:bg-white text-stone-800 border border-white/70 backdrop-blur-md shadow-xs"
-                      }`}
-                    >
-                      Sign In
-                    </button>
-                  </Link>
-                  <Link href="/auth/register">
-                    <button
-                      type="button"
-                      className="flex items-center gap-1 px-3 py-1 xl:px-3.5 xl:py-1.5 rounded-full font-medium text-xs bg-[#064B25] hover:bg-[#003D1C] text-white shadow-xs transition cursor-pointer whitespace-nowrap"
-                    >
-                      <span>Create Account</span>
-                    </button>
-                  </Link>
-
+                <>
                   <button
                     type="button"
                     onClick={() => setUserMenuOpen((prev) => !prev)}
@@ -699,13 +679,13 @@ export function MainHeader() {
                     aria-haspopup="menu"
                     aria-label="Open Account Options"
                     title="Account"
-                    className={`w-8 h-8 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
                       isSolid
-                        ? "border border-stone-200 bg-white text-stone-700 hover:text-[#064B25] hover:border-[#064B25]/40 hover:bg-[#F0F7F0]"
+                        ? "text-stone-700 hover:text-[#064B25] hover:bg-[#F0F7F0]"
                         : "bg-white/85 hover:bg-white text-stone-800 border border-white/70 backdrop-blur-md shadow-xs hover:text-[#064B25]"
                     }`}
                   >
-                    <User className="w-4 h-4" />
+                    <CircleUser className="w-[21px] h-[21px] stroke-[1.75]" />
                   </button>
 
                   {userMenuOpen && (
@@ -739,7 +719,7 @@ export function MainHeader() {
                       </div>
                     </div>
                   )}
-                </div>
+                </>
               )}
             </div>
           </div>
@@ -814,18 +794,18 @@ export function MainHeader() {
                 aria-expanded={mobileUserMenuOpen}
                 aria-haspopup="menu"
                 aria-label={isAuthenticated && user ? "User Account Menu" : "Open Account Options"}
-                className={`w-7 h-7 min-[360px]:w-8 min-[360px]:h-8 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
+                className={`w-8 h-8 min-[360px]:w-9 min-[360px]:h-9 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
                   isAuthenticated && user
                     ? "bg-[#064B25] text-white shadow-xs"
                     : "bg-white/60 hover:bg-white/85 backdrop-blur-md border border-white/70 text-stone-800 hover:text-[#064B25] shadow-2xs"
                 }`}
               >
                 {isAuthenticated && user ? (
-                  <span className="text-[11px] font-bold">
+                  <span className="text-xs font-bold">
                     {(user.name?.trim()?.[0] || "U").toUpperCase()}
                   </span>
                 ) : (
-                  <User className="w-3.5 h-3.5 min-[360px]:w-4 min-[360px]:h-4" />
+                  <CircleUser className="w-[18px] h-[18px] min-[360px]:w-5 min-[360px]:h-5 stroke-[1.75]" />
                 )}
               </button>
 
