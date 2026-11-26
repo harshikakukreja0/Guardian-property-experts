@@ -70,9 +70,12 @@ export function MainHeader() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [mobileUserMenuOpen, setMobileUserMenuOpen] = useState(false);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
 
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const desktopUserMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileUserMenuRef = useRef<HTMLDivElement | null>(null);
 
   // Active city fallback to Mumbai
   const selectedCity = city && city !== "All Cities" ? city : "Mumbai";
@@ -96,11 +99,39 @@ export function MainHeader() {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     setUserMenuOpen(false);
+    setMobileUserMenuOpen(false);
     setCityMenuOpen(false);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
+
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (desktopUserMenuRef.current && !desktopUserMenuRef.current.contains(target)) {
+        setUserMenuOpen(false);
+      }
+      if (mobileUserMenuRef.current && !mobileUserMenuRef.current.contains(target)) {
+        setMobileUserMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setUserMenuOpen(false);
+        setMobileUserMenuOpen(false);
+        setCityMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const handleCitySelect = (c: string) => {
     setCity(c);
@@ -561,21 +592,25 @@ export function MainHeader() {
               </button>
             </Link>
 
-            {/* ── User Auth Controls: Sign In / Create Account when logged out; Authenticated User Menu when logged in ── */}
-            <div className="relative flex items-center gap-1.5">
+            {/* ── User Auth Controls: Sign In / Create Account + Profile Icon when logged out; Authenticated User Menu when logged in ── */}
+            <div ref={desktopUserMenuRef} className="relative flex items-center gap-1.5">
               {isAuthenticated && user ? (
                 <>
                   <button
                     type="button"
-                    onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 xl:px-3 xl:py-1.5 rounded-full font-medium text-xs shadow-xs transition cursor-pointer ${
+                    onClick={() => setUserMenuOpen((prev) => !prev)}
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="menu"
+                    className={`flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 xl:pl-2 xl:pr-3 xl:py-1 rounded-full font-medium text-xs shadow-xs transition cursor-pointer ${
                       isSolid
-                        ? "bg-[#F0F7F0] text-[#064B25] border border-stone-200"
+                        ? "bg-[#F0F7F0] text-[#064B25] border border-stone-200 hover:border-[#064B25]/40"
                         : "bg-white/85 text-[#064B25] border border-white/70 backdrop-blur-md hover:bg-white"
                     }`}
                     aria-label="User Account Menu"
                   >
-                    <User className="w-3.5 h-3.5 text-[#064B25]" />
+                    <span className="w-5 h-5 rounded-full bg-[#064B25] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                      {(user.name?.trim()?.[0] || "U").toUpperCase()}
+                    </span>
                     <span className="max-w-[85px] truncate text-stone-800 font-semibold">
                       {user.name.split(" ")[0]}
                     </span>
@@ -585,7 +620,7 @@ export function MainHeader() {
                   {userMenuOpen && (
                     <div
                       className="absolute right-0 top-full mt-2 w-60 rounded-2xl bg-white border border-[#E5EAE5] shadow-xl p-2.5 z-50 animate-in fade-in duration-150 max-w-[calc(100vw-2rem)]"
-                      onMouseLeave={() => setUserMenuOpen(false)}
+                      role="menu"
                     >
                       <div className="px-3 py-2 border-b border-stone-100">
                         <p className="text-xs font-semibold text-stone-900 truncate">{user.name}</p>
@@ -656,6 +691,54 @@ export function MainHeader() {
                       <span>Create Account</span>
                     </button>
                   </Link>
+
+                  <button
+                    type="button"
+                    onClick={() => setUserMenuOpen((prev) => !prev)}
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="menu"
+                    aria-label="Open Account Options"
+                    title="Account"
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
+                      isSolid
+                        ? "border border-stone-200 bg-white text-stone-700 hover:text-[#064B25] hover:border-[#064B25]/40 hover:bg-[#F0F7F0]"
+                        : "bg-white/85 hover:bg-white text-stone-800 border border-white/70 backdrop-blur-md shadow-xs hover:text-[#064B25]"
+                    }`}
+                  >
+                    <User className="w-4 h-4" />
+                  </button>
+
+                  {userMenuOpen && (
+                    <div
+                      className="absolute right-0 top-full mt-2 w-56 rounded-2xl bg-white border border-[#E5EAE5] shadow-xl p-2 z-50 animate-in fade-in duration-150 max-w-[calc(100vw-2rem)]"
+                      role="menu"
+                    >
+                      <div className="px-3 py-2 border-b border-stone-100">
+                        <p className="text-xs font-semibold text-stone-900">Account Access</p>
+                        <p className="text-[11px] text-stone-500">Sign in or create a new account</p>
+                      </div>
+                      <div className="py-1.5 space-y-1">
+                        <Link
+                          href="/auth/login"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-stone-800 hover:bg-[#F0F7F0] hover:text-[#064B25] rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <LogIn className="w-4 h-4 text-[#064B25]" />
+                          <span>Sign In</span>
+                        </Link>
+                        <Link
+                          href="/auth/register"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-white bg-[#064B25] hover:bg-[#003D1C] rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <User className="w-4 h-4" />
+                          <span>Create Account</span>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -670,6 +753,7 @@ export function MainHeader() {
                 onClick={() => {
                   setCityMenuOpen(!cityMenuOpen);
                   setMobileMenuOpen(false);
+                  setMobileUserMenuOpen(false);
                 }}
                 className="flex items-center gap-1 px-2 min-[360px]:px-2.5 py-1 rounded-full bg-white/60 hover:bg-white/80 backdrop-blur-md border border-white/70 text-[11px] min-[360px]:text-xs font-bold text-stone-800 shadow-2xs transition"
                 title="Select City"
@@ -718,11 +802,123 @@ export function MainHeader() {
               </Button>
             </Link>
 
+            {/* Mobile Profile Icon & Popover */}
+            <div ref={mobileUserMenuRef} className="relative">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileUserMenuOpen((prev) => !prev);
+                  setCityMenuOpen(false);
+                  setMobileMenuOpen(false);
+                }}
+                aria-expanded={mobileUserMenuOpen}
+                aria-haspopup="menu"
+                aria-label={isAuthenticated && user ? "User Account Menu" : "Open Account Options"}
+                className={`w-7 h-7 min-[360px]:w-8 min-[360px]:h-8 rounded-full flex items-center justify-center transition cursor-pointer shrink-0 ${
+                  isAuthenticated && user
+                    ? "bg-[#064B25] text-white shadow-xs"
+                    : "bg-white/60 hover:bg-white/85 backdrop-blur-md border border-white/70 text-stone-800 hover:text-[#064B25] shadow-2xs"
+                }`}
+              >
+                {isAuthenticated && user ? (
+                  <span className="text-[11px] font-bold">
+                    {(user.name?.trim()?.[0] || "U").toUpperCase()}
+                  </span>
+                ) : (
+                  <User className="w-3.5 h-3.5 min-[360px]:w-4 min-[360px]:h-4" />
+                )}
+              </button>
+
+              {mobileUserMenuOpen && (
+                <div
+                  className="absolute right-0 top-full mt-2 w-56 max-w-[calc(100vw-1rem)] rounded-2xl bg-white border border-[#E5EAE5] shadow-2xl p-2 z-50 animate-in fade-in duration-150"
+                  role="menu"
+                >
+                  {isAuthenticated && user ? (
+                    <>
+                      <div className="px-3 py-2 border-b border-stone-100">
+                        <p className="text-xs font-semibold text-stone-900 truncate">{user.name}</p>
+                        <p className="text-[11px] text-stone-500 truncate">{user.email}</p>
+                        <div className="flex items-center gap-1.5 mt-1.5">
+                          <span className="text-[10px] font-medium uppercase text-[#064B25] bg-[#F0F7F0] px-2 py-0.5 rounded-full border border-emerald-100">
+                            {user.role.replace("-", " ")}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="py-1 space-y-0.5">
+                        <Link
+                          href={ROLE_DASHBOARD_ROUTES[user.role] || "/dashboard/customer"}
+                          onClick={() => setMobileUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-3 py-2.5 text-xs font-medium text-stone-700 hover:bg-[#F0F7F0] hover:text-[#064B25] rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <Layers className="w-4 h-4 text-[#064B25]" />
+                          <span>My Dashboard</span>
+                        </Link>
+                        <Link
+                          href="/dashboard/customer"
+                          onClick={() => setMobileUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-3 py-2.5 text-xs font-medium text-stone-700 hover:bg-stone-50 rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <Heart className="w-4 h-4 text-rose-500" />
+                          <span>Saved Properties ({savedPropertyIds.length})</span>
+                        </Link>
+                      </div>
+                      <div className="pt-1.5 mt-1 border-t border-stone-100">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            logout();
+                            setMobileUserMenuOpen(false);
+                            router.push("/");
+                          }}
+                          className="w-full flex items-center gap-2 px-3 py-2.5 text-xs font-medium text-rose-600 hover:bg-rose-50 rounded-xl cursor-pointer transition"
+                          role="menuitem"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="px-3 py-2 border-b border-stone-100">
+                        <p className="text-xs font-semibold text-stone-900">Account Access</p>
+                        <p className="text-[11px] text-stone-500">Sign in or create a new account</p>
+                      </div>
+                      <div className="py-1.5 space-y-1.5">
+                        <Link
+                          href="/auth/login"
+                          onClick={() => setMobileUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2.5 text-xs font-semibold text-stone-800 hover:bg-[#F0F7F0] hover:text-[#064B25] rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <LogIn className="w-4 h-4 text-[#064B25]" />
+                          <span>Sign In</span>
+                        </Link>
+                        <Link
+                          href="/auth/register"
+                          onClick={() => setMobileUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2.5 text-xs font-semibold text-white bg-[#064B25] hover:bg-[#003D1C] rounded-xl transition-colors"
+                          role="menuitem"
+                        >
+                          <User className="w-4 h-4" />
+                          <span>Create Account</span>
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(!mobileMenuOpen);
                 setCityMenuOpen(false);
+                setMobileUserMenuOpen(false);
               }}
               className="p-1.5 rounded-xl bg-white/60 hover:bg-white/85 backdrop-blur-md border border-white/70 text-stone-800 transition cursor-pointer shrink-0 shadow-2xs"
               aria-label="Toggle Navigation Menu"
