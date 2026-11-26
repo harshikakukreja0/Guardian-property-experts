@@ -14,12 +14,12 @@ export function AuthSplitLayout({
   children,
 }: AuthSplitLayoutProps) {
   return (
-    <div className="min-h-screen w-full grid grid-cols-1 lg:grid-cols-12 bg-white">
-      {/* Left Showcase Section (~60% on desktop) */}
-      <div className="relative lg:col-span-7 flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden bg-[#F7F1E7]">
+    <div className="min-h-dvh w-full grid grid-cols-1 lg:grid-cols-12 bg-white overflow-x-hidden">
+      {/* Left Showcase Section (~58-60% on desktop, full edge-to-edge coverage) */}
+      <div className="relative lg:col-span-7 w-full aspect-[16/9] lg:aspect-auto lg:min-h-dvh overflow-hidden bg-[#F7F1E7]">
         <Link
           href="/"
-          className="relative w-full max-w-3xl aspect-[4/3] block overflow-hidden rounded-2xl"
+          className="relative block w-full h-full"
           title="Back to Guardian PropertyExpert Home"
         >
           <Image
@@ -28,7 +28,7 @@ export function AuthSplitLayout({
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-contain object-center"
+            className="object-cover object-center"
           />
         </Link>
 
