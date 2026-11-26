@@ -160,7 +160,7 @@ export function MainFooter() {
             </div>
 
             {/* Column 3 — Resources */}
-            <div className="lg:col-span-3 space-y-4">
+            <div className="lg:col-span-2 space-y-4">
               <div>
                 <h3 className="text-[13px] font-semibold text-[#17211C]">
                   Resources
@@ -197,7 +197,7 @@ export function MainFooter() {
             </div>
 
             {/* Column 4 — Get in Touch */}
-            <div className="lg:col-span-3 lg:border-l lg:border-[#E2EBE4] lg:pl-8 space-y-4">
+            <div className="sm:col-span-2 lg:col-span-4 lg:border-l lg:border-[#E2EBE4] lg:pl-6 space-y-4">
               <div>
                 <h3 className="text-[13px] font-semibold text-[#17211C]">
                   Get in Touch
@@ -215,10 +215,12 @@ export function MainFooter() {
                 <li>
                   <a
                     href="mailto:Contact@guardianpropertyexperts.com"
-                    className="flex items-center gap-2.5 hover:text-[#16793D] transition-colors break-all"
+                    className="flex items-center gap-2.5 hover:text-[#16793D] transition-colors"
                   >
                     <Mail className="w-4 h-4 text-[#16793D] shrink-0" strokeWidth={1.75} />
-                    <span>Contact@guardianpropertyexperts.com</span>
+                    <span className="text-[12.5px] sm:text-[13px] break-words min-w-0">
+                      Contact@guardianpropertyexperts.com
+                    </span>
                   </a>
                 </li>
                 <li>
