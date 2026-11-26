@@ -6,18 +6,31 @@ import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 export function MainFooter() {
   return (
     <footer className="relative overflow-hidden bg-[#F7FAF7] border-t border-[#DDE6DF] text-[#17211C] text-xs">
-      {/* Subtle Real-Estate Skyline Silhouette along lower portion */}
+      {/* Visible, Layered Real-Estate Skyline Illustration along lower portion */}
       <div
-        className="pointer-events-none select-none absolute inset-x-0 bottom-0 z-0 opacity-[0.06] text-[#064B25]"
+        className="pointer-events-none select-none absolute inset-x-0 bottom-0 z-0 opacity-[0.36]"
         aria-hidden="true"
       >
+        <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#F7FAF7] to-transparent" />
         <svg
-          viewBox="0 0 1440 160"
-          fill="currentColor"
+          viewBox="0 0 1440 180"
+          fill="none"
           preserveAspectRatio="none"
-          className="w-full h-24 sm:h-32 md:h-40 block"
+          className="w-full h-28 sm:h-36 md:h-44 block"
         >
-          <path d="M0,160 L0,115 L36,115 L36,80 L76,80 L76,115 L98,115 L98,62 L144,62 L144,115 L168,115 L168,92 L212,92 L212,125 L240,125 L240,48 L292,48 L292,125 L318,125 L318,75 L368,75 L368,110 L402,110 L402,38 L452,38 L452,110 L478,110 L478,86 L530,86 L530,122 L560,122 L560,55 L616,55 L616,122 L646,122 L646,95 L698,95 L698,118 L732,118 L732,30 L788,30 L788,118 L820,118 L820,72 L870,72 L870,115 L904,115 L904,52 L960,52 L960,115 L992,115 L992,88 L1042,88 L1042,120 L1076,120 L1076,42 L1130,42 L1130,120 L1162,120 L1162,78 L1214,78 L1214,112 L1248,112 L1248,58 L1304,58 L1304,112 L1338,112 L1338,85 L1390,85 L1390,118 L1440,118 L1440,160 Z" />
+          {/* Back Tower Layer — Soft Sage Green */}
+          <path
+            d="M0,180 L0,122 L42,122 L42,84 L88,84 L88,122 L114,122 L114,56 L168,56 L168,122 L198,122 L198,95 L248,95 L248,132 L278,132 L278,44 L334,44 L334,132 L364,132 L364,78 L418,78 L418,118 L450,118 L450,32 L506,32 L506,118 L538,118 L538,90 L592,90 L592,128 L624,128 L624,52 L682,52 L682,128 L716,128 L716,96 L768,96 L768,124 L802,124 L802,26 L862,26 L862,124 L894,124 L894,74 L946,74 L946,120 L980,120 L980,48 L1038,48 L1038,120 L1072,120 L1072,92 L1124,92 L1124,126 L1158,126 L1158,38 L1216,38 L1216,126 L1248,126 L1248,80 L1302,80 L1302,118 L1336,118 L1336,56 L1392,56 L1392,118 L1440,118 L1440,180 Z"
+            fill="#C7DDD0"
+          />
+          {/* Front Architectural Layer — Muted Guardian Green with Subtle Outlines */}
+          <path
+            d="M0,180 L0,144 L56,144 L56,112 L106,112 L106,144 L140,144 L140,94 L194,94 L194,144 L232,144 L232,120 L288,120 L288,150 L322,150 L322,82 L378,82 L378,150 L412,150 L412,106 L468,106 L468,142 L504,142 L504,70 L562,70 L562,142 L598,142 L598,114 L654,114 L654,148 L690,148 L690,86 L748,86 L748,148 L784,148 L784,118 L838,118 L838,144 L874,144 L874,66 L932,66 L932,144 L968,144 L968,104 L1022,104 L1022,142 L1058,142 L1058,82 L1116,82 L1116,142 L1152,142 L1152,114 L1206,114 L1206,146 L1242,146 L1242,74 L1298,74 L1298,146 L1334,146 L1334,108 L1388,108 L1388,140 L1440,140 L1440,180 Z"
+            fill="#9BC0AA"
+            stroke="#064B25"
+            strokeOpacity="0.22"
+            strokeWidth="1.2"
+          />
         </svg>
       </div>
 
@@ -178,29 +191,29 @@ export function MainFooter() {
               Get in Touch
             </h3>
 
-            <ul className="space-y-3 text-[#647067] font-normal">
+            <ul className="space-y-3 text-[#4A554E] font-normal">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#064B25] shrink-0 mt-0.5" strokeWidth={1.75} />
                 <span className="leading-relaxed">
-                  One International Center, Tower 3, Senapati Bapat Marg, Mumbai 400013
+                  Guardian Financial Experts, Sector 49, Sohna Road, Gurugram, Haryana (HR 122018), India.
                 </span>
               </li>
               <li>
                 <a
-                  href="mailto:Contact@guardianpropertyexperts.com"
+                  href="mailto:info@guardianfinancialexperts.com"
                   className="flex items-center gap-2.5 hover:text-[#064B25] transition-colors break-all"
                 >
                   <Mail className="w-4 h-4 text-[#064B25] shrink-0" strokeWidth={1.75} />
-                  <span>Contact@guardianpropertyexperts.com</span>
+                  <span>info@guardianfinancialexperts.com</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:18004197000"
+                  href="tel:+919220360824"
                   className="flex items-center gap-2.5 hover:text-[#064B25] transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[#064B25] shrink-0" strokeWidth={1.75} />
-                  <span>1800-419-7000</span>
+                  <span>+91 92203 60824</span>
                 </a>
               </li>
             </ul>
