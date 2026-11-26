@@ -214,11 +214,11 @@ export function MainFooter() {
                 </li>
                 <li>
                   <a
-                    href="mailto:info@guardianfinancialexperts.com"
+                    href="mailto:Contact@guardianpropertyexperts.com"
                     className="flex items-center gap-2.5 hover:text-[#16793D] transition-colors break-all"
                   >
                     <Mail className="w-4 h-4 text-[#16793D] shrink-0" strokeWidth={1.75} />
-                    <span>info@guardianfinancialexperts.com</span>
+                    <span>Contact@guardianpropertyexperts.com</span>
                   </a>
                 </li>
                 <li>
