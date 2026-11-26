@@ -8,110 +8,22 @@ export function MainFooter() {
     <footer className="relative overflow-hidden bg-[#F8FBF8] border-t border-[#E2EBE4] text-[#17211C] text-[13px]">
       {/* Main Content + Centered Architectural Skyline */}
       <div className="relative">
-        {/* Soft Sage Rolling Hills & Centered Architectural Cityscape Illustration */}
+        {/* Real-Estate Skyline Background Image */}
         <div
-          className="pointer-events-none select-none absolute inset-x-0 bottom-0 z-0 overflow-hidden"
+          className="pointer-events-none select-none absolute inset-x-0 bottom-0 z-0 h-28 sm:h-36 md:h-44 overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 24%, black 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 24%, black 100%)",
+          }}
           aria-hidden="true"
         >
-          <svg
-            viewBox="0 0 1440 160"
-            fill="none"
-            preserveAspectRatio="xMidYMax slice"
-            className="w-full h-24 sm:h-32 md:h-36 block"
-          >
-            <defs>
-              <linearGradient id="skylineFade" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#9ABEA7" stopOpacity="0" />
-                <stop offset="18%" stopColor="#9ABEA7" stopOpacity="0.45" />
-                <stop offset="50%" stopColor="#7FA98E" stopOpacity="0.65" />
-                <stop offset="82%" stopColor="#9ABEA7" stopOpacity="0.45" />
-                <stop offset="100%" stopColor="#9ABEA7" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="skylineBackFade" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#BDD6C5" stopOpacity="0" />
-                <stop offset="22%" stopColor="#BDD6C5" stopOpacity="0.5" />
-                <stop offset="50%" stopColor="#ACCAB7" stopOpacity="0.6" />
-                <stop offset="78%" stopColor="#BDD6C5" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#BDD6C5" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="hillLeft" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#DDE9E0" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#EDF4EE" stopOpacity="0.2" />
-              </linearGradient>
-              <linearGradient id="hillRight" x1="1" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#DDE9E0" stopOpacity="0.85" />
-                <stop offset="100%" stopColor="#EDF4EE" stopOpacity="0.2" />
-              </linearGradient>
-            </defs>
-
-            {/* Subtle Left & Right Sage Hills framing the skyline */}
-            <path d="M0,115 Q260,138 560,160 L0,160 Z" fill="url(#hillLeft)" />
-            <path d="M1440,112 Q1180,138 880,160 L1440,160 Z" fill="url(#hillRight)" />
-
-            {/* Back Architectural Towers */}
-            <g fill="url(#skylineBackFade)">
-              <rect x="385" y="102" width="26" height="58" rx="1" />
-              <rect x="448" y="88" width="24" height="72" rx="1" />
-              <rect x="520" y="72" width="32" height="88" rx="1" />
-              <rect x="588" y="92" width="28" height="68" rx="1" />
-              <rect x="656" y="64" width="34" height="96" rx="1" />
-              <rect x="742" y="54" width="30" height="106" rx="1" />
-              <rect x="818" y="78" width="32" height="82" rx="1" />
-              <rect x="892" y="94" width="26" height="66" rx="1" />
-              <rect x="960" y="84" width="28" height="76" rx="1" />
-              <rect x="1026" y="104" width="24" height="56" rx="1" />
-            </g>
-
-            {/* Foreground High-Rises with Stepped Roofs & Subtle Facade Lines */}
-            <g fill="url(#skylineFade)">
-              <rect x="494" y="58" width="24" height="102" rx="1" />
-              <rect x="500" y="50" width="12" height="8" />
-              <rect x="558" y="98" width="26" height="62" rx="1" />
-              <rect x="622" y="74" width="28" height="86" rx="1" />
-              <rect x="698" y="42" width="32" height="118" rx="1" />
-              <rect x="706" y="32" width="16" height="10" />
-              <rect x="713" y="20" width="2" height="12" />
-              <rect x="778" y="34" width="34" height="126" rx="1" />
-              <rect x="786" y="24" width="18" height="10" />
-              <rect x="794" y="12" width="2" height="12" />
-              <rect x="854" y="86" width="28" height="74" rx="1" />
-              <rect x="922" y="66" width="30" height="94" rx="1" />
-              <rect x="930" y="58" width="14" height="8" />
-            </g>
-
-            {/* Subtle Vertical Architectural Window Ribbons */}
-            <g stroke="#F8FBF8" strokeOpacity="0.45" strokeWidth="1.2">
-              <line x1="502" y1="64" x2="502" y2="152" />
-              <line x1="510" y1="64" x2="510" y2="152" />
-              <line x1="631" y1="82" x2="631" y2="152" />
-              <line x1="641" y1="82" x2="641" y2="152" />
-              <line x1="708" y1="50" x2="708" y2="152" />
-              <line x1="714" y1="50" x2="714" y2="152" />
-              <line x1="720" y1="50" x2="720" y2="152" />
-              <line x1="788" y1="44" x2="788" y2="152" />
-              <line x1="795" y1="44" x2="795" y2="152" />
-              <line x1="802" y1="44" x2="802" y2="152" />
-              <line x1="932" y1="74" x2="932" y2="152" />
-              <line x1="942" y1="74" x2="942" y2="152" />
-            </g>
-
-            {/* Soft Sage Tree Foliage Cluster Along the Base */}
-            <g fill="#A8C7B2" fillOpacity="0.55">
-              <circle cx="368" cy="148" r="14" />
-              <circle cx="384" cy="152" r="10" />
-              <circle cx="424" cy="150" r="12" />
-              <circle cx="476" cy="152" r="11" />
-              <circle cx="540" cy="151" r="12" />
-              <circle cx="606" cy="152" r="10" />
-              <circle cx="678" cy="151" r="12" />
-              <circle cx="760" cy="152" r="11" />
-              <circle cx="838" cy="151" r="12" />
-              <circle cx="908" cy="152" r="10" />
-              <circle cx="988" cy="150" r="12" />
-              <circle cx="1052" cy="148" r="13" />
-              <circle cx="1070" cy="152" r="9" />
-            </g>
-          </svg>
+          <Image
+            src="/images/footer-skyline.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-bottom opacity-85"
+          />
         </div>
 
         {/* 4-Column Responsive Footer Content */}
