@@ -17,7 +17,10 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-black/10 pointer-events-none" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ backgroundColor: "rgba(229, 231, 235, 0.18)" }}
+        />
 
         <div className="absolute top-3 left-3 flex items-center gap-2">
           <Badge className="bg-gpe-emerald text-white text-[10px] font-bold">
@@ -28,7 +31,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
           </Badge>
         </div>
 
-        <div className="absolute bottom-3 left-3 right-3 text-white">
+        <div className="absolute bottom-3 left-3 right-3 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.45)]">
           <span className="text-[11px] text-[#E5E7EB] font-medium tracking-wide uppercase">
             By {project.builder.name}
           </span>
