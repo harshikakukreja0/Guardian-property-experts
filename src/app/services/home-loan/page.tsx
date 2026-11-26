@@ -34,7 +34,6 @@ export default function HomeLoanPage() {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("Mumbai");
   const [employmentType, setEmploymentType] = useState("Salaried");
-  const [preferredBank, setPreferredBank] = useState("HDFC Bank");
   const [submitted, setSubmitted] = useState(false);
 
   // EMI Math
@@ -238,7 +237,7 @@ export default function HomeLoanPage() {
                   <CheckCircle2 className="w-8 h-8 text-[#064B25] mx-auto" />
                   <p className="text-xs font-black text-[#003D1C]">Underwriting Request Dispatched!</p>
                   <p className="text-[11px] text-stone-600">
-                    A dedicated Guardian mortgage advisor will contact you within 2 hours with pre-approved rate sheets from {preferredBank}.
+                    A dedicated Guardian mortgage advisor will contact you within 2 hours with pre-approved rate sheets{email ? ` at ${email}` : ""}.
                   </p>
                 </div>
               ) : (
@@ -268,18 +267,15 @@ export default function HomeLoanPage() {
                       />
                     </div>
                     <div>
-                      <label className="block font-bold text-stone-700 mb-1">Preferred Bank</label>
-                      <select
-                        value={preferredBank}
-                        onChange={(e) => setPreferredBank(e.target.value)}
-                        className="w-full h-10 px-2 rounded-xl border border-stone-200 bg-stone-50/50 focus:outline-none focus:ring-1 focus:ring-[#064B25] font-semibold"
-                      >
-                        <option value="HDFC Bank">HDFC Bank</option>
-                        <option value="State Bank of India">SBI</option>
-                        <option value="ICICI Bank">ICICI Bank</option>
-                        <option value="Axis Bank">Axis Bank</option>
-                        <option value="Kotak Mahindra">Kotak</option>
-                      </select>
+                      <label className="block font-bold text-stone-700 mb-1">Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="name@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full h-10 px-3 rounded-xl border border-stone-200 bg-stone-50/50 focus:outline-none focus:ring-1 focus:ring-[#064B25] font-semibold"
+                      />
                     </div>
                   </div>
 
