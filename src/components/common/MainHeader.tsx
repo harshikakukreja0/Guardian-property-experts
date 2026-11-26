@@ -450,11 +450,11 @@ export function MainHeader() {
               <button
                 type="button"
                 onClick={() => router.push("/news")}
-                className={`flex items-center gap-1 px-2.5 py-1 xl:px-3 xl:py-1.5 rounded-full text-xs xl:text-sm transition-all duration-150 cursor-pointer ${getPillClass(
+                className={`flex items-center gap-1 px-2.5 py-1 xl:px-3 xl:py-1.5 rounded-full text-xs xl:text-sm whitespace-nowrap transition-all duration-150 cursor-pointer ${getPillClass(
                   pathname?.startsWith("/news") || activeDropdown === "insights"
                 )}`}
               >
-                <span>Insights</span>
+                <span>Insights &amp; News</span>
                 <ChevronDown className="w-3 h-3 opacity-70" />
               </button>
 
