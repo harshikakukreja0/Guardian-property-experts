@@ -260,7 +260,9 @@ export function SearchBar({ className = "" }: { className?: string }) {
 
       {/* 3. Popular Searches Directly Underneath (Centered) */}
       <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
-        <span className="font-bold text-stone-800 mr-1">Popular Searches:</span>
+        <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/95 text-stone-800 border border-stone-200/90 shadow-2xs font-bold backdrop-blur-sm text-xs">
+          Popular Searches:
+        </span>
         {popularSearchPresets.map((preset) => (
           <button
             key={preset.label}
