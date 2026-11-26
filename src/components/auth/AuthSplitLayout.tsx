@@ -16,10 +16,10 @@ export function AuthSplitLayout({
   return (
     <div className="min-h-screen w-full grid grid-cols-1 lg:grid-cols-12 bg-white">
       {/* Left Showcase Section (~60% on desktop) */}
-      <div className="relative lg:col-span-7 min-h-[320px] sm:min-h-[380px] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#F7F1E7]">
+      <div className="relative lg:col-span-7 flex items-center justify-center p-4 sm:p-6 lg:p-10 overflow-hidden bg-[#F7F1E7]">
         <Link
           href="/"
-          className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-screen block"
+          className="relative w-full max-w-3xl aspect-[4/3] block overflow-hidden rounded-2xl"
           title="Back to Guardian PropertyExpert Home"
         >
           <Image
