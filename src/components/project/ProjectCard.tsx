@@ -17,7 +17,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-black/10 pointer-events-none" />
 
         <div className="absolute top-3 left-3 flex items-center gap-2">
           <Badge className="bg-gpe-emerald text-white text-[10px] font-bold">
@@ -29,7 +29,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
         </div>
 
         <div className="absolute bottom-3 left-3 right-3 text-white">
-          <span className="text-[11px] text-[#D1D5DB] font-medium tracking-wide uppercase">
+          <span className="text-[11px] text-[#E5E7EB] font-medium tracking-wide uppercase">
             By {project.builder.name}
           </span>
           <h3 className="text-lg font-bold text-white line-clamp-1">{project.title}</h3>

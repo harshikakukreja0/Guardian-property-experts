@@ -41,7 +41,7 @@ export function PropertyCard({ property }: { property: PropertyItem }) {
             className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/15 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10 pointer-events-none" />
 
           {/* Top Left: Single Verified Pill */}
           <div className="absolute top-3 left-3 flex items-center gap-1.5">
