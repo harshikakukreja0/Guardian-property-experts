@@ -46,17 +46,6 @@ const ROLE_DASHBOARD_ROUTES: Record<UserRole, string> = {
   support: "/dashboard/support",
 };
 
-const ROLES_LIST: { role: UserRole; label: string; icon: string }[] = [
-  { role: "super-admin", label: "Super Admin", icon: "👑" },
-  { role: "operations", label: "Operations Admin", icon: "⚙️" },
-  { role: "sales-crm", label: "Sales / CRM", icon: "📈" },
-  { role: "broker", label: "Broker Partner", icon: "💼" },
-  { role: "builder", label: "Builder / Developer", icon: "🏗️" },
-  { role: "owner", label: "Property Owner", icon: "🏡" },
-  { role: "customer", label: "Buyer / Customer", icon: "👤" },
-  { role: "support", label: "Support & Verification", icon: "🎧" },
-];
-
 const CITIES = [
   "Mumbai",
   "Delhi NCR",
@@ -71,7 +60,7 @@ const CITIES = [
 export function MainHeader() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, isAuthenticated, logout, switchRole, savedPropertyIds } = useAuthStore();
+  const { user, isAuthenticated, logout, savedPropertyIds } = useAuthStore();
   const { city, setCity } = useFilterStore();
 
   const isHomePage = pathname === "/";
@@ -112,12 +101,6 @@ export function MainHeader() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
-
-  const handleRoleSelect = (role: UserRole) => {
-    switchRole(role);
-    setUserMenuOpen(false);
-    router.push(ROLE_DASHBOARD_ROUTES[role]);
-  };
 
   const handleCitySelect = (c: string) => {
     setCity(c);
@@ -578,49 +561,38 @@ export function MainHeader() {
               </button>
             </Link>
 
-            {/* ── User Auth / Login / Sign Out Button & Dropdown (Fully Visible & Practical) ── */}
-            <div className="relative">
+            {/* ── User Auth Controls: Sign In / Create Account when logged out; Authenticated User Menu when logged in ── */}
+            <div className="relative flex items-center gap-1.5">
               {isAuthenticated && user ? (
-                <button
-                  type="button"
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 xl:px-3 xl:py-1.5 rounded-full font-bold text-xs shadow-xs transition cursor-pointer ${
-                    isSolid
-                      ? "bg-[#F0F7F0] text-[#064B25] border border-stone-200"
-                      : "bg-white/85 text-[#064B25] border border-white/70 backdrop-blur-md hover:bg-white"
-                  }`}
-                  aria-label="User Account Menu"
-                >
-                  <span className="text-xs">👤</span>
-                  <span className="max-w-[70px] truncate text-stone-800 font-bold">{user.name.split(" ")[0]}</span>
-                  <ChevronDown className="w-3 h-3 text-stone-400" />
-                </button>
-              ) : (
-                <Link href="/auth/login">
+                <>
                   <button
                     type="button"
-                    className="flex items-center gap-1 px-3 py-1 xl:px-3.5 xl:py-1.5 rounded-full font-bold text-xs bg-[#064B25] hover:bg-[#003D1C] text-white shadow-xs transition cursor-pointer"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 xl:px-3 xl:py-1.5 rounded-full font-medium text-xs shadow-xs transition cursor-pointer ${
+                      isSolid
+                        ? "bg-[#F0F7F0] text-[#064B25] border border-stone-200"
+                        : "bg-white/85 text-[#064B25] border border-white/70 backdrop-blur-md hover:bg-white"
+                    }`}
+                    aria-label="User Account Menu"
                   >
-                    <LogIn className="w-3.5 h-3.5" />
-                    <span>Log In</span>
+                    <User className="w-3.5 h-3.5 text-[#064B25]" />
+                    <span className="max-w-[85px] truncate text-stone-800 font-semibold">
+                      {user.name.split(" ")[0]}
+                    </span>
+                    <ChevronDown className="w-3 h-3 text-stone-400" />
                   </button>
-                </Link>
-              )}
 
-              {/* User Account / Profile Dropdown with Logout & Dashboard */}
-              {userMenuOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-64 rounded-2xl bg-white border border-[#E5EAE5] shadow-2xl p-2.5 z-50 animate-in fade-in duration-150 max-w-[calc(100vw-2rem)]"
-                  onMouseLeave={() => setUserMenuOpen(false)}
-                >
-                  {isAuthenticated && user ? (
-                    <>
+                  {userMenuOpen && (
+                    <div
+                      className="absolute right-0 top-full mt-2 w-60 rounded-2xl bg-white border border-[#E5EAE5] shadow-xl p-2.5 z-50 animate-in fade-in duration-150 max-w-[calc(100vw-2rem)]"
+                      onMouseLeave={() => setUserMenuOpen(false)}
+                    >
                       <div className="px-3 py-2 border-b border-stone-100">
-                        <p className="text-xs font-bold text-stone-900">{user.name}</p>
+                        <p className="text-xs font-semibold text-stone-900 truncate">{user.name}</p>
                         <p className="text-[11px] text-stone-500 truncate">{user.email}</p>
                         <div className="flex items-center gap-1.5 mt-1.5">
-                          <span className="text-[10px] font-black uppercase text-[#064B25] bg-[#F0F7F0] px-2 py-0.5 rounded-full border border-emerald-100">
-                            {user.role}
+                          <span className="text-[10px] font-medium uppercase text-[#064B25] bg-[#F0F7F0] px-2 py-0.5 rounded-full border border-emerald-100">
+                            {user.role.replace("-", " ")}
                           </span>
                         </div>
                       </div>
@@ -629,51 +601,23 @@ export function MainHeader() {
                         <Link
                           href={ROLE_DASHBOARD_ROUTES[user.role] || "/dashboard/customer"}
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-stone-700 hover:bg-[#F0F7F0] hover:text-[#064B25] rounded-xl"
+                          className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-stone-700 hover:bg-[#F0F7F0] hover:text-[#064B25] rounded-xl transition-colors"
                         >
                           <Layers className="w-4 h-4 text-[#064B25]" />
-                          <span>{user.role.toUpperCase()} Workspace</span>
+                          <span>My Dashboard</span>
                         </Link>
 
                         <Link
                           href="/dashboard/customer"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-stone-700 hover:bg-stone-50 rounded-xl"
+                          className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-stone-700 hover:bg-stone-50 rounded-xl transition-colors"
                         >
                           <Heart className="w-4 h-4 text-rose-500" />
                           <span>Saved Properties ({savedPropertyIds.length})</span>
                         </Link>
                       </div>
 
-                      {/* Quick Role Switcher for Testing All 8 Dashboards */}
-                      <div className="pt-2 border-t border-stone-100">
-                        <div className="px-3 py-1 text-[10px] font-bold text-stone-400 uppercase tracking-wider">
-                          Quick Role Switcher
-                        </div>
-                        <div className="max-h-36 overflow-y-auto space-y-0.5">
-                          {ROLES_LIST.map((r) => (
-                            <button
-                              key={r.role}
-                              type="button"
-                              onClick={() => handleRoleSelect(r.role)}
-                              className={`w-full flex items-center justify-between px-2.5 py-1 text-xs rounded-lg transition ${
-                                user?.role === r.role
-                                  ? "bg-[#064B25] text-white font-bold"
-                                  : "hover:bg-[#F0F7F0] text-stone-700"
-                              }`}
-                            >
-                              <span className="flex items-center gap-1.5">
-                                <span>{r.icon}</span>
-                                <span>{r.label}</span>
-                              </span>
-                              {user?.role === r.role && <span className="text-[9px] bg-white/20 px-1 py-0.5 rounded">Active</span>}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Sign Out Action Button */}
-                      <div className="pt-1.5 mt-1.5 border-t border-stone-100">
+                      <div className="pt-1.5 mt-1 border-t border-stone-100">
                         <button
                           type="button"
                           onClick={() => {
@@ -681,26 +625,37 @@ export function MainHeader() {
                             setUserMenuOpen(false);
                             router.push("/");
                           }}
-                          className="w-full flex items-center gap-2 px-3 py-2 text-xs font-bold text-rose-600 hover:bg-rose-50 rounded-xl cursor-pointer transition"
+                          className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 rounded-xl cursor-pointer transition"
                         >
                           <LogOut className="w-4 h-4" />
                           <span>Sign Out</span>
                         </button>
                       </div>
-                    </>
-                  ) : (
-                    <div className="p-2 space-y-2">
-                      <p className="text-xs font-bold text-stone-900">Guardian Property Experts</p>
-                      <div className="grid grid-cols-2 gap-2">
-                        <Link href="/auth/login" onClick={() => setUserMenuOpen(false)}>
-                          <Button variant="outline" size="sm" className="w-full text-xs">Log In</Button>
-                        </Link>
-                        <Link href="/auth/register" onClick={() => setUserMenuOpen(false)}>
-                          <Button size="sm" className="w-full text-xs bg-[#064B25] hover:bg-[#003D1C]">Register</Button>
-                        </Link>
-                      </div>
                     </div>
                   )}
+                </>
+              ) : (
+                <div className="flex items-center gap-1.5">
+                  <Link href="/auth/login">
+                    <button
+                      type="button"
+                      className={`px-3 py-1 xl:px-3.5 xl:py-1.5 rounded-full font-medium text-xs transition cursor-pointer ${
+                        isSolid
+                          ? "text-stone-700 hover:text-[#064B25] hover:bg-[#F0F7F0]"
+                          : "bg-white/85 hover:bg-white text-stone-800 border border-white/70 backdrop-blur-md shadow-xs"
+                      }`}
+                    >
+                      Sign In
+                    </button>
+                  </Link>
+                  <Link href="/auth/register">
+                    <button
+                      type="button"
+                      className="flex items-center gap-1 px-3 py-1 xl:px-3.5 xl:py-1.5 rounded-full font-medium text-xs bg-[#064B25] hover:bg-[#003D1C] text-white shadow-xs transition cursor-pointer whitespace-nowrap"
+                    >
+                      <span>Create Account</span>
+                    </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -798,38 +753,48 @@ export function MainHeader() {
               }}
             >
               {isAuthenticated && user ? (
-                <div className="flex items-center justify-between w-full">
-                  <div>
-                    <div className="text-xs font-bold text-stone-900">{user.name}</div>
-                    <div className="text-[10px] text-stone-600 font-medium">
-                      {user.email} &bull; <span className="capitalize text-emerald-800 font-bold">{user.role}</span>
+                <div className="space-y-2.5 w-full">
+                  <div className="flex items-center justify-between w-full gap-2">
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-stone-900 truncate">{user.name}</div>
+                      <div className="text-[10px] text-stone-600 font-medium truncate">
+                        {user.email} &bull; <span className="capitalize text-emerald-800 font-bold">{user.role.replace("-", " ")}</span>
+                      </div>
                     </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        logout();
+                        setMobileMenuOpen(false);
+                        router.push("/");
+                      }}
+                      className="flex items-center gap-1 text-xs font-bold text-rose-700 bg-white/50 hover:bg-white/80 border border-white/60 px-2.5 py-1 rounded-xl transition shadow-2xs cursor-pointer shrink-0"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      <span>Sign Out</span>
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      logout();
-                      setMobileMenuOpen(false);
-                      router.push("/");
-                    }}
-                    className="flex items-center gap-1 text-xs font-bold text-rose-700 bg-white/50 hover:bg-white/80 border border-white/60 px-2.5 py-1 rounded-xl transition shadow-2xs cursor-pointer"
+                  <Link
+                    href={ROLE_DASHBOARD_ROUTES[user.role] || "/dashboard/customer"}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-1.5 w-full py-1.5 rounded-xl bg-white/50 hover:bg-white/80 border border-white/60 text-xs font-semibold text-[#064B25] transition"
                   >
-                    <LogOut className="w-3.5 h-3.5" />
-                    <span>Sign Out</span>
-                  </button>
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Open My Dashboard</span>
+                  </Link>
                 </div>
               ) : (
-                <div className="flex items-center justify-between w-full">
+                <div className="flex flex-wrap items-center justify-between gap-2 w-full">
                   <span className="text-xs font-bold text-stone-800">Account Access</span>
                   <div className="flex items-center gap-2">
                     <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
-                      <Button size="sm" variant="outline" className="text-xs h-8 rounded-xl bg-white/50 hover:bg-white/80 border-white/60 text-stone-800 font-bold">
-                        Log In
+                      <Button size="sm" variant="outline" className="text-xs h-8 rounded-xl bg-white/50 hover:bg-white/80 border-white/60 text-stone-800 font-semibold">
+                        Sign In
                       </Button>
                     </Link>
                     <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)}>
-                      <Button size="sm" className="text-xs h-8 rounded-xl bg-[#064B25] hover:bg-[#003D1C] text-white font-bold shadow-xs">
-                        Register
+                      <Button size="sm" className="text-xs h-8 rounded-xl bg-[#064B25] hover:bg-[#003D1C] text-white font-semibold shadow-xs">
+                        Create Account
                       </Button>
                     </Link>
                   </div>
