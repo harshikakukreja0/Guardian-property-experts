@@ -57,37 +57,48 @@ export function MainFooter() {
                 </p>
               </div>
 
-              {/* Social Media Icons */}
-              <div className="flex items-center gap-2 pt-1">
+              {/* Official Social Media Backlinks */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
                 {[
                   {
-                    label: "LinkedIn",
-                    href: "https://www.linkedin.com",
-                    path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",
+                    label: "Guardian Financial Experts on Facebook",
+                    title: "Facebook",
+                    href: "https://www.facebook.com/people/Guardian-Financial-Experts/61559265921589/",
+                    path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
                   },
                   {
-                    label: "Instagram",
-                    href: "https://www.instagram.com",
+                    label: "Guardian Financial Experts on Instagram",
+                    title: "Instagram",
+                    href: "https://www.instagram.com/guardian_financial_experts_/",
                     path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z M17.5 6.5h.01 M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z",
                   },
                   {
-                    label: "X",
-                    href: "https://x.com",
-                    path: "M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768m2.46 -2.46L20 4",
+                    label: "Guardian Financial Experts on LinkedIn",
+                    title: "LinkedIn",
+                    href: "https://www.linkedin.com/company/guardian-financial-experts/",
+                    path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",
                   },
                   {
-                    label: "YouTube",
-                    href: "https://www.youtube.com",
+                    label: "Guardian Financial Experts on YouTube",
+                    title: "YouTube",
+                    href: "https://www.youtube.com/@guardianfinancialexperts",
                     path: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z M9.75 15.02l5.75-3.27-5.75-3.27v6.54z",
+                  },
+                  {
+                    label: "Guardian Financial Experts on X (Twitter)",
+                    title: "X (Twitter)",
+                    href: "https://x.com/guardian_experts",
+                    path: "M4 4l11.733 16h4.267l-11.733 -16z M4 20l6.768 -6.768m2.46 -2.46L20 4",
                   },
                 ].map((social) => (
                   <a
-                    key={social.label}
+                    key={social.title}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-8 h-8 rounded-lg border border-[#DCE5DE] bg-white/80 hover:bg-white hover:border-[#16793D] text-[#16793D] flex items-center justify-center transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
+                    title={social.title}
+                    className="w-8 h-8 rounded-lg border border-[#DCE5DE] bg-white/80 hover:bg-[#16793D] hover:border-[#16793D] text-[#16793D] hover:text-white flex items-center justify-center transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -97,6 +108,7 @@ export function MainFooter() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className="w-3.5 h-3.5"
+                      aria-hidden="true"
                     >
                       <path d={social.path} />
                     </svg>
@@ -197,7 +209,7 @@ export function MainFooter() {
                 <li className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-[#16793D] shrink-0 mt-0.5" strokeWidth={1.75} />
                   <span className="leading-relaxed">
-                    Guardian Financial Experts, Sector 49, Sohna Road, Gurugram, Haryana (HR 122018), India.
+                    Sector 49, Gurugram, Haryana, India
                   </span>
                 </li>
                 <li>
