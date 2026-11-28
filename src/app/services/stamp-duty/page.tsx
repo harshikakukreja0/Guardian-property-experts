@@ -370,14 +370,14 @@ export default function StampDutyPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 pt-4 border-t border-emerald-200/80 space-y-2">
-                <Link href="/services/agreements">
+              <div className="mt-6 pt-4 border-t border-emerald-200/80 flex flex-col gap-3">
+                <Link href="/services/agreements" className="block">
                   <Button className="w-full bg-[#064B25] hover:bg-[#003D1C] text-white font-bold h-12 rounded-xl text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2">
                     <span>Draft Sale / Lease Agreement</span>
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/services/home-loan">
+                <Link href="/services/home-loan" className="block">
                   <Button variant="outline" className="w-full border-[#064B25] text-[#064B25] font-bold h-12 rounded-xl text-xs sm:text-sm hover:bg-emerald-50">
                     Check Home Loan Affordability
                   </Button>
